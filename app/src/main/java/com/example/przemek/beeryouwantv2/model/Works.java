@@ -1,5 +1,8 @@
 package com.example.przemek.beeryouwantv2.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Przemek on 02.12.2016.
  */
@@ -7,26 +10,30 @@ package com.example.przemek.beeryouwantv2.model;
 public class Works {
     private int idWorks;
     private int imageResourceID;
+    private int favouriteWorks;
+    private String nameWorks;
+    private String descriptionWorks;
     private Province province;
     private Country country;
-    private int favourite;
-    private String name;
-    private String description;
+    private List<Beer> beersList;
 
-    public Works(int idWorks, int imageResourceID, Province province, Country country, int favourite, String name, String description) {
+    public Works() {
+        this.beersList = new ArrayList<>();
+    }
+    public Works(int idWorks, int imageResourceID, int favouriteWorks, String nameWorks, String descriptionWorks, Province province, Country country, List<Beer> beersList) {
         this.idWorks = idWorks;
         this.imageResourceID = imageResourceID;
+        this.favouriteWorks = favouriteWorks;
+        this.nameWorks = nameWorks;
+        this.descriptionWorks = descriptionWorks;
         this.province = province;
         this.country = country;
-        this.favourite = favourite;
-        this.name = name;
-        this.description = description;
+        this.beersList = beersList;
     }
 
     public int getIdWorks() {
         return idWorks;
     }
-
     public void setIdWorks(int idWorks) {
         this.idWorks = idWorks;
     }
@@ -34,15 +41,34 @@ public class Works {
     public int getImageResourceID() {
         return imageResourceID;
     }
-
     public void setImageResourceID(int imageResourceID) {
         this.imageResourceID = imageResourceID;
+    }
+
+    public int getFavouriteWorks() {
+        return favouriteWorks;
+    }
+    public void setFavouriteWorks(int favouriteWorks) {
+        this.favouriteWorks = favouriteWorks;
+    }
+
+    public String getNameWorks() {
+        return nameWorks;
+    }
+    public void setNameWorks(String nameWorks) {
+        this.nameWorks = nameWorks;
+    }
+
+    public String getDescriptionWorks() {
+        return descriptionWorks;
+    }
+    public void setDescriptionWorks(String descriptionWorks) {
+        this.descriptionWorks = descriptionWorks;
     }
 
     public Province getProvince() {
         return province;
     }
-
     public void setProvince(Province province) {
         this.province = province;
     }
@@ -50,32 +76,14 @@ public class Works {
     public Country getCountry() {
         return country;
     }
-
     public void setCountry(Country country) {
         this.country = country;
     }
 
-    public int getFavourite() {
-        return favourite;
+    public List<Beer> getBeersList() {
+        return beersList;
     }
-
-    public void setFavourite(int favourite) {
-        this.favourite = favourite;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBeersList(List<Beer> beersList) {
+        this.beersList = beersList;
     }
 }

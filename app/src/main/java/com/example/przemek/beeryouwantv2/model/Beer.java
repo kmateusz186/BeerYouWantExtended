@@ -6,13 +6,15 @@ package com.example.przemek.beeryouwantv2.model;
 
 public class Beer {
     private int idBeer;
-    private String name;
+    private String nameBeer;
     private Style style;
     private Works works;
 
-    public Beer(int idBeer, String name, Style style, Works works) {
+    public Beer() {
+    }
+    public Beer(int idBeer, String nameBeer, Style style, Works works) {
         this.idBeer = idBeer;
-        this.name = name;
+        this.nameBeer = nameBeer;
         this.style = style;
         this.works = works;
     }
@@ -20,23 +22,20 @@ public class Beer {
     public int getIdBeer() {
         return idBeer;
     }
-
     public void setIdBeer(int idBeer) {
         this.idBeer = idBeer;
     }
 
-    public String getName() {
-        return name;
+    public String getNameBeer() {
+        return nameBeer;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setNameBeer(String nameBeer) {
+        this.nameBeer = nameBeer;
     }
 
     public Style getStyle() {
         return style;
     }
-
     public void setStyle(Style style) {
         this.style = style;
     }
@@ -44,7 +43,6 @@ public class Beer {
     public Works getWorks() {
         return works;
     }
-
     public void setWorks(Works works) {
         this.works = works;
     }
