@@ -1,6 +1,9 @@
 package com.example.przemek.beeryouwantv2.Table;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.przemek.beeryouwantv2.model.Country;
 
 /**
  * Created by Przemek on 04.12.2016.
@@ -17,10 +20,17 @@ public class CountryTable {
                 + NAME_COUNTRY + " TEXT,"
                 + ")";
         db.execSQL(CREATE_COUNTRY_TABLE);
+        onInsert(db, new Country(0,"Polska",null, null));
     }
 
     public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         CountryTable.onCreate(db);
+    }
+
+    public static void onInsert(SQLiteDatabase db, Country country){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NAME_COUNTRY, country.getNameCountry());
+        db.insert(TABLE_NAME, null, contentValues);
     }
 }

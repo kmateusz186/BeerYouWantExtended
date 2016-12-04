@@ -1,6 +1,9 @@
 package com.example.przemek.beeryouwantv2.Table;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.przemek.beeryouwantv2.model.ALevel;
 
 /**
  * Created by Przemek on 04.12.2016.
@@ -17,10 +20,19 @@ public class ALevelTable {
                 + NAME_ALEVEL + " TEXT, "
                 + ")";
         db.execSQL(CREATE_A_LEVEL_TABLE);
+        onInsert(db, new ALevel(0, "Niska", null));
+        onInsert(db, new ALevel(0, "Normalna", null));
+        onInsert(db, new ALevel(0, "Wysoka", null));
     }
 
     public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         ALevelTable.onCreate(db);
+    }
+
+    public static void onInsert(SQLiteDatabase db, ALevel aLevel){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NAME_ALEVEL, aLevel.getNameALevel());
+        db.insert(TABLE_NAME, null, contentValues);
     }
 }
