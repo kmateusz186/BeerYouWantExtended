@@ -20,8 +20,7 @@ public class WorksListCountryFragment extends ListFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //cursor = db.query("COUNTRY", new String[]{"_id", "NAME"}, null, null, null, null, "NAME ASC");
-        //setListAdapter(new SimpleCursorAdapter(getActivity(), android.R.layout.simple_list_item_1,
-        //        cursor, new String[]{"NAME"}, new int[]{android.R.id.text1}, 0));
+        //setListAdapter();
         return super.onCreateView(inflater, container, savedInstanceState);
     }
 
