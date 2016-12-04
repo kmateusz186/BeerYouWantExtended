@@ -1,6 +1,9 @@
 package com.example.przemek.beeryouwantv2.Table;
 
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.przemek.beeryouwantv2.model.Style;
 
 /**
  * Created by Przemek on 04.12.2016.
@@ -35,10 +38,37 @@ public class StyleTable {
                 + "REFERENCES " + ALevelTable.TABLE_NAME + "(" + ALevelTable.ID_ALEVEL + ")"
                 + ")";
         db.execSQL(CREATE_STYLE_TABLE);
+        onInsert(db, new Style(0, "Eurolager", "Jasne","Opcjonalnie", "Dolna", null, null, null, null), 1, 1, 2);
+        onInsert(db, new Style(0, "American Pale Ale", "Jasne","Opcjonalnie", "Górna", null, null, null, null), 2, 2, 2);
+        onInsert(db, new Style(0, "India Pale Ale", "Jasne","Opcjonalnie", "Górna", null, null, null, null), 3, 2, 2);
+        onInsert(db, new Style(0, "Barley Wine", "Jasne","Opcjonalnie", "Górna", null, null, null, null), 3, 3, 3);
+        onInsert(db, new Style(0, "Stout", "Ciemne","Opcjonalnie", "Górna", null, null, null, null), 1, 2, 2);
+        onInsert(db, new Style(0, "Grodziskie", "Jasne","Tak", "Górna", null, null, null, null), 1, 1, 1);
+        onInsert(db, new Style(0, "Pszeniczne", "Jasne","Tak", "Górna", null, null, null, null), 1, 2, 2);
+        onInsert(db, new Style(0, "Black India Pale Ale", "Ciemne","Opcjonalnie", "Górna", null, null, null, null), 3, 2, 2);
+        onInsert(db, new Style(0, "Strong Lager", "Jasne","Opcjonalnie", "Dolna", null, null, null, null), 1, 1, 3);
+        onInsert(db, new Style(0, "Double India Pale Ale", "Jasne","Opcjonalnie", "Górna", null, null, null, null), 3, 2, 3);
+        onInsert(db, new Style(0, "Russian Imperial Stout", "Ciemne","Opcjonalnie", "Górna", null, null, null, null), 3, 3, 3);
+        onInsert(db, new Style(0, "Koźlak", "Jasne","Opcjonalnie", "Dolna", null, null, null, null), 2, 3, 2);
+        onInsert(db, new Style(0, "Porter Bałtycki", "Ciemne","Opcjonalnie", "Dolna", null, null, null, null), 3, 3, 3);
+
+
     }
 
     public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         StyleTable.onCreate(db);
+    }
+
+    public static void onInsert(SQLiteDatabase db, Style style, int idBitter, int idMalt, int idAlcohol){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(NAME_STYLE, style.getNameStyle());
+        contentValues.put(COLOR, style.getColorStyle());
+        contentValues.put(BITTER, idBitter);
+        contentValues.put(MALT, idMalt);
+        contentValues.put(ALCOHOL, idAlcohol);
+        contentValues.put(MALT_WHEAT, style.getMaltWheat());
+        contentValues.put(FERMENTATION, style.getFermentation());
+        db.insert(TABLE_NAME, null, contentValues);
     }
 }

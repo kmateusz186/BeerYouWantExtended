@@ -20,7 +20,7 @@ public class Works {
     public Works() {
         this.beersList = new ArrayList<>();
     }
-    public Works(int idWorks, int imageResourceID, int favouriteWorks, String nameWorks, String descriptionWorks, Province province, Country country, List<Beer> beersList) {
+    public Works(int idWorks, String nameWorks, int imageResourceID, String descriptionWorks, Province province, Country country, int favouriteWorks, List<Beer> beersList) {
         this.idWorks = idWorks;
         this.imageResourceID = imageResourceID;
         this.favouriteWorks = favouriteWorks;
