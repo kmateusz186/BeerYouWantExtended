@@ -1,5 +1,15 @@
 package com.example.przemek.beeryouwantv2;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.example.przemek.beeryouwantv2.data.ALevelDao;
+import com.example.przemek.beeryouwantv2.data.BMLevelDao;
+import com.example.przemek.beeryouwantv2.data.BeerDao;
+import com.example.przemek.beeryouwantv2.data.CountryDao;
+import com.example.przemek.beeryouwantv2.data.ProvinceDao;
+import com.example.przemek.beeryouwantv2.data.StyleDao;
+import com.example.przemek.beeryouwantv2.data.WorksDao;
 import com.example.przemek.beeryouwantv2.model.ALevel;
 import com.example.przemek.beeryouwantv2.model.BMLevel;
 import com.example.przemek.beeryouwantv2.model.Beer;
@@ -15,6 +25,19 @@ import java.util.List;
  */
 
 public class DataManagerImplementation implements DataManager {
+    private Context context;
+    private SQLiteDatabase db;
+
+    private ALevelDao aLevelDao;
+    private BMLevelDao bmLevelDao;
+    private BeerDao beerDao;
+    private CountryDao countryDao;
+    private ProvinceDao provinceDao;
+    private StyleDao styleDao;
+    private WorksDao worksDao;
+
+    private DataManagerImplementation(Context context)
+
     @Override
     public ALevel getALevel(int idALevel) {
         return null;
