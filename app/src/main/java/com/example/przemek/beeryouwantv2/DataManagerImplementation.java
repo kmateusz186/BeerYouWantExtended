@@ -3,6 +3,7 @@ package com.example.przemek.beeryouwantv2;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.SystemClock;
 
 import com.example.przemek.beeryouwantv2.data.ALevelDao;
 import com.example.przemek.beeryouwantv2.data.BMLevelDao;
@@ -52,178 +53,103 @@ public class DataManagerImplementation implements DataManager {
 
     }
 
+    private void openDatabase() {
+        if (!db.isOpen()) {
+            db = SQLiteDatabase.openDatabase(Data.DATABASE_PATH, null, SQLiteDatabase.OPEN_READWRITE);
+            aLevelDao = new ALevelDao(db);
+            bmLevelDao = new BMLevelDao(db);
+            //    beerDao = new BeerDao(db);
+            countryDao = new CountryDao(db);
+            //  provinceDao = new ProvinceDao(db);
+            //  styleDao = new StyleDao(db);
+            //   worksDao = new WorksDao(db);
+        }
+    }
+    private void closeDatabase() {
+        if (db.isOpen()) {
+            db.close();
+        }
+    }
+    private void resetDb() {
+        closeDatabase();
+        SystemClock.sleep(500);
+        openDatabase();
+    }
+
     @Override
     public ALevel getALevel(int idALevel) {
-        return null;
+        ALevel aLevel = aLevelDao.get(idALevel);
+        return aLevel;
     }
 
     @Override
     public List<ALevel> getALevels() {
-        return null;
-    }
-
-    @Override
-    public int saveALevel(ALevel aLevel) {
-        return 0;
-    }
-
-    @Override
-    public boolean deleteALevel(int idALevel) {
-        return false;
-    }
-
-    @Override
-    public boolean updateALevel(ALevel aLevel) {
-        return false;
+        return aLevelDao.getAll();
     }
 
     @Override
     public BMLevel getBMLevel(int idBMLevel) {
-        return null;
+        BMLevel bmLevel = bmLevelDao.get(idBMLevel);
+        return bmLevel;
     }
 
     @Override
     public List<BMLevel> getBMLevels() {
-        return null;
-    }
-
-    @Override
-    public int saveBMLevel(BMLevel bmLevel) {
-        return 0;
-    }
-
-    @Override
-    public boolean deleteBMLevel(int idBMLevel) {
-        return false;
-    }
-
-    @Override
-    public boolean updateBMLevel(BMLevel bmLevel) {
-        return false;
+        return bmLevelDao.getAll();
     }
 
     @Override
     public Beer getBeer(int idBeer) {
-        return null;
+        Beer beer = beerDao.get(idBeer);
+        return beer;
     }
 
     @Override
     public List<Beer> getBeers() {
-        return null;
-    }
-
-    @Override
-    public int saveBeer(Beer beer) {
-        return 0;
-    }
-
-    @Override
-    public boolean deleteBeer(int idBeer) {
-        return false;
-    }
-
-    @Override
-    public boolean updateBeer(Beer beer) {
-        return false;
+        return beerDao.getAll();
     }
 
     @Override
     public Country getCountry(int idCountry) {
-        return null;
+        Country country = countryDao.get(idCountry);
+        return country;
     }
 
     @Override
     public List<Country> getCountries() {
-        return null;
-    }
-
-    @Override
-    public int saveCountry(Country country) {
-        return 0;
-    }
-
-    @Override
-    public boolean deleteCountry(int idCountry) {
-        return false;
-    }
-
-    @Override
-    public boolean updateCountry(Country country) {
-        return false;
+        return countryDao.getAll();
     }
 
     @Override
     public Province getProvince(int idProvince) {
-        return null;
+        Province province = provinceDao.get(idProvince);
+        return province;
     }
 
     @Override
     public List<Province> getProvinces() {
-        return null;
-    }
-
-    @Override
-    public int saveProvince(Province province) {
-        return 0;
-    }
-
-    @Override
-    public boolean deleteProvince(int idProvince) {
-        return false;
-    }
-
-    @Override
-    public boolean updateProvince(Province province) {
-        return false;
+        return provinceDao.getAll();
     }
 
     @Override
     public Style getStyle(int idStyle) {
-        return null;
+        Style style = styleDao.get(idStyle);
+        return style;
     }
 
     @Override
     public List<Style> getStyles() {
-        return null;
-    }
-
-    @Override
-    public int saveStyle(Style style) {
-        return 0;
-    }
-
-    @Override
-    public boolean deleteStyle(int idStyle) {
-        return false;
-    }
-
-    @Override
-    public boolean updateStyle(Style Style) {
-        return false;
+        return styleDao.getAll();
     }
 
     @Override
     public Works getWorks(int idWorks) {
-        return null;
+        Works works = worksDao.get(idWorks);
+        return works;
     }
 
     @Override
     public List<Works> getWorkses() {
-        return null;
-    }
-
-    @Override
-    public int saveWorks(Works works) {
-        return 0;
-    }
-
-    @Override
-    public boolean deleteWorks(int idWorks) {
-        return false;
-    }
-
-    @Override
-    public boolean updateWorks(Works works) {
-        return false;
+        return worksDao.getAll();
     }
 }
