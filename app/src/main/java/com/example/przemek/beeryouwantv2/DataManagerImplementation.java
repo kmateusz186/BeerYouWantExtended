@@ -2,6 +2,7 @@ package com.example.przemek.beeryouwantv2;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.przemek.beeryouwantv2.data.ALevelDao;
 import com.example.przemek.beeryouwantv2.data.BMLevelDao;
@@ -37,7 +38,11 @@ public class DataManagerImplementation implements DataManager {
     private WorksDao worksDao;
 
     private DataManagerImplementation(Context context){
+        this.context = context;
+        SQLiteOpenHelper openHelper = new OpenHelper(this.context);
+        db = openHelper.getWritableDatabase();
 
+        //aLevelDao = new ALevelDao(db);
     }
 
     @Override
