@@ -37,7 +37,7 @@ public class DataManagerImplementation implements DataManager {
     private WorksDao worksDao;
 
     private DataManagerImplementation(Context context){
-        
+
     }
 
     @Override
