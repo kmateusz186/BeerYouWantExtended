@@ -21,7 +21,7 @@ public class CountryTable {
                 + NAME_COUNTRY + " TEXT,"
                 + ")";
         db.execSQL(CREATE_COUNTRY_TABLE);
-        onInsert(db, new Country(0,"Polska",null, null));
+        onInsert(db, new Country(0,"Polska",null));
     }
 
     public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
