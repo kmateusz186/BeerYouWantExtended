@@ -42,7 +42,14 @@ public class DataManagerImplementation implements DataManager {
         SQLiteOpenHelper openHelper = new OpenHelper(this.context);
         db = openHelper.getWritableDatabase();
 
-        //aLevelDao = new ALevelDao(db);
+        aLevelDao = new ALevelDao(db);
+        bmLevelDao = new BMLevelDao(db);
+    //    beerDao = new BeerDao(db);
+        countryDao = new CountryDao(db);
+      //  provinceDao = new ProvinceDao(db);
+      //  styleDao = new StyleDao(db);
+     //   worksDao = new WorksDao(db);
+
     }
 
     @Override
