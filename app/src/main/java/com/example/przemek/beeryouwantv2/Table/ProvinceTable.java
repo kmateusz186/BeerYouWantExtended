@@ -2,6 +2,7 @@ package com.example.przemek.beeryouwantv2.Table;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 
 import com.example.przemek.beeryouwantv2.model.Province;
 
@@ -11,17 +12,17 @@ import com.example.przemek.beeryouwantv2.model.Province;
 
 public class ProvinceTable {
     public static final String TABLE_NAME = "province";
-    public static final String ID_PROVINCE = "id_province";
+    //public static final String ID_PROVINCE = "id_province";
     public static final String NAME_PROVINCE = "name";
     public static final String COUNTRY = "country";
 
     public static void onCreate(SQLiteDatabase db){
         String CREATE_PROVINCE_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-                + ID_PROVINCE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + NAME_PROVINCE + " TEXT,"
                 + COUNTRY + " INTEGER,"
                 + "FOREIGN KEY(" + COUNTRY + ")"
-                + "REFERENCES " + CountryTable.TABLE_NAME + "(" + CountryTable.ID_COUNTRY + "),"
+                + "REFERENCES " + CountryTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
                 + ")";
         db.execSQL(CREATE_PROVINCE_TABLE);
         onInsert(db, new Province(0, "Małopolskie", null, null), 1);

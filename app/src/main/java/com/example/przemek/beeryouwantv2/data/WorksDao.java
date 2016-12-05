@@ -22,7 +22,7 @@ public class WorksDao implements Dao<Works> {
     }
 
     @Override
-    public Works get(long id) {
+    public Works get(int id) {
         return null;
     }
 
