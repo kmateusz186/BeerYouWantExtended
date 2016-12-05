@@ -23,7 +23,7 @@ public class StyleDao implements Dao<Style> {
     }
 
     @Override
-    public Style get(long id) {
+    public Style get(int id) {
         return null;
     }
 

@@ -2,6 +2,7 @@ package com.example.przemek.beeryouwantv2.Table;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 
 import com.example.przemek.beeryouwantv2.R;
 import com.example.przemek.beeryouwantv2.model.Works;
@@ -12,7 +13,6 @@ import com.example.przemek.beeryouwantv2.model.Works;
 
 public class WorksTable {
     public static final String TABLE_NAME = "works";
-    public static final String ID_WORKS = "id_works";
     public static final String NAME_WORKS = "name";
     public static final String IMAGE_RESOURCE_ID = "image_resource_id";
     public static final String DESCRIPTION = "description";
@@ -21,14 +21,14 @@ public class WorksTable {
 
     public static void onCreate(SQLiteDatabase db){
         String CREATE_WORKS_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-                + ID_WORKS + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + NAME_WORKS + " TEXT,"
                 + IMAGE_RESOURCE_ID + " INTEGER,"
                 + DESCRIPTION + " TEXT,"
                 + PROVINCE + " INTEGER,"
                 + FAVOURITE + " INTEGER,"
                 + "FOREIGN KEY(" + PROVINCE + ")"
-                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + ProvinceTable.ID_PROVINCE + "),"
+                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + BaseColumns._ID + ")"
                 + ")";
         db.execSQL(CREATE_WORKS_TABLE);
 

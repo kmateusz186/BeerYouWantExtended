@@ -2,6 +2,7 @@ package com.example.przemek.beeryouwantv2.Table;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 
 import com.example.przemek.beeryouwantv2.model.BMLevel;
 
@@ -11,12 +12,12 @@ import com.example.przemek.beeryouwantv2.model.BMLevel;
 
 public class BMLevelTable {
     public static final String TABLE_NAME = "bm_level";
-    public static final String ID_BMLEVEL = "id_bm_level";
+    //public static final String ID_BMLEVEL = "id_bm_level";
     public static final String NAME_BMLEVEL = "name";
 
     public static void onCreate(SQLiteDatabase db){
         String CREATE_BM_LEVEL_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-                + ID_BMLEVEL + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + NAME_BMLEVEL + " TEXT,"
                 + ")";
         db.execSQL(CREATE_BM_LEVEL_TABLE);
