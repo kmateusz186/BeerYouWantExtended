@@ -36,7 +36,9 @@ public class DataManagerImplementation implements DataManager {
     private StyleDao styleDao;
     private WorksDao worksDao;
 
-    private DataManagerImplementation(Context context)
+    private DataManagerImplementation(Context context){
+        
+    }
 
     @Override
     public ALevel getALevel(int idALevel) {
