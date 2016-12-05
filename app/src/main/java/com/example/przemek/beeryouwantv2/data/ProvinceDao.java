@@ -23,7 +23,7 @@ public class ProvinceDao implements Dao<Province> {
     }
 
     @Override
-    public Province get(long id) {
+    public Province get(int id) {
         return null;
     }
 

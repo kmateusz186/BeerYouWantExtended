@@ -24,7 +24,7 @@ public class BeerDao implements Dao<Beer> {
     }
 
     @Override
-    public Beer get(long id) {
+    public Beer get(int id) {
         return null;
     }
 

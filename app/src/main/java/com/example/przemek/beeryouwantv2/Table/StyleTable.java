@@ -2,6 +2,7 @@ package com.example.przemek.beeryouwantv2.Table;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 
 import com.example.przemek.beeryouwantv2.model.Style;
 
@@ -11,7 +12,7 @@ import com.example.przemek.beeryouwantv2.model.Style;
 
 public class StyleTable {
     public static final String TABLE_NAME = "style";
-    public static final String ID_STYLE = "id_style";
+    //public static final String ID_STYLE = "id_style";
     public static final String NAME_STYLE = "name";
     public static final String COLOR = "color";
     public static final String MALT_WHEAT = "malt_wheat";
@@ -22,7 +23,7 @@ public class StyleTable {
 
     public static void onCreate(SQLiteDatabase db){
         String CREATE_STYLE_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-                + ID_STYLE + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + NAME_STYLE + " TEXT,"
                 + COLOR + " TEXT,"
                 + BITTER + " INTEGER,"
@@ -31,11 +32,11 @@ public class StyleTable {
                 + MALT_WHEAT + " TEXT,"
                 + FERMENTATION + " TEXT,"
                 + "FOREIGN KEY(" + BITTER + ")"
-                + "REFERENCES " + BMLevelTable.TABLE_NAME + "(" + BMLevelTable.ID_BMLEVEL + "),"
+                + "REFERENCES " + BMLevelTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
                 + "FOREIGN KEY(" + MALT + ")"
-                + "REFERENCES " + BMLevelTable.TABLE_NAME + "(" + BMLevelTable.ID_BMLEVEL + "),"
+                + "REFERENCES " + BMLevelTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
                 +"FOREIGN KEY(" + ALCOHOL + ")"
-                + "REFERENCES " + ALevelTable.TABLE_NAME + "(" + ALevelTable.ID_ALEVEL + ")"
+                + "REFERENCES " + ALevelTable.TABLE_NAME + "(" + BaseColumns._ID + ")"
                 + ")";
         db.execSQL(CREATE_STYLE_TABLE);
         onInsert(db, new Style(0, "Eurolager", "Jasne","Opcjonalnie", "Dolna", null, null, null, null), 1, 1, 2);

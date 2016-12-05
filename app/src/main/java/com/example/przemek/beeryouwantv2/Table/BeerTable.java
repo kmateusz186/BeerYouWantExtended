@@ -2,6 +2,7 @@ package com.example.przemek.beeryouwantv2.Table;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 
 import com.example.przemek.beeryouwantv2.model.Beer;
 
@@ -11,21 +12,21 @@ import com.example.przemek.beeryouwantv2.model.Beer;
 
 public class BeerTable {
     public static final String TABLE_NAME = "beer";
-    public static final String ID_BEER = "id_beer";
+    //public static final String ID_BEER = "id_beer";
     public static final String NAME_BEER = "name";
     public static final String STYLE = "style";
     public static final String WORKS = "works";
 
     public static void onCreate(SQLiteDatabase db){
         String CREATE_BEER_TABLE = "CREATE TABLE " + TABLE_NAME + "("
-                + ID_BEER + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + NAME_BEER + " TEXT,"
                 + STYLE + " INTEGER,"
                 + WORKS + " INTEGER,"
                 + "FOREIGN KEY(" + STYLE + ")"
-                + "REFERENCES " + StyleTable.TABLE_NAME + "(" + StyleTable.ID_STYLE + "),"
+                + "REFERENCES " + StyleTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
                 + "FOREIGN KEY(" + WORKS + ")"
-                + "REFERENCES " + WorksTable.TABLE_NAME + "(" + WorksTable.ID_WORKS + "),"
+                + "REFERENCES " + WorksTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
                 + ")";
         db.execSQL(CREATE_BEER_TABLE);
         onInsert(db, new Beer(0, "Żywiec", null, null), 1, 2);
