@@ -17,6 +17,14 @@ public class Country {
         this.provincesList = new ArrayList<>();
         this.worksList = new ArrayList<>();
     }
+
+    public Country(int idCountry, String nameCountry) {
+        this.idCountry = idCountry;
+        this.nameCountry = nameCountry;
+        this.provincesList = new ArrayList<>();
+        this.worksList = new ArrayList<>();
+    }
+
     public Country(int idCountry, String nameCountry, List<Province> provincesList, List<Works> worksList) {
         this.idCountry = idCountry;
         this.nameCountry = nameCountry;

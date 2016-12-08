@@ -10,16 +10,27 @@ import java.util.List;
 public class Province {
     private int idProvince;
     private String nameProvince;
+    private int idCountry;
     private Country country;
     private List<Works> worksList;
 
     public Province() {
         this.worksList = new ArrayList<>();
     }
+
+    public Province(int idProvince, String nameProvince, int idCountry) {
+        this.idProvince = idProvince;
+        this.nameProvince = nameProvince;
+        this.idCountry = idCountry;
+        this.country = new Country();
+        this.worksList = new ArrayList<>();
+    }
+
     public Province(int idProvince, String nameProvince, Country country, List<Works> worksList) {
         this.idProvince = idProvince;
         this.nameProvince = nameProvince;
         this.country = country;
+        this.idCountry = country.getIdCountry();
         this.worksList = worksList;
     }
 
@@ -49,5 +60,12 @@ public class Province {
     }
     public void setWorksList(List<Works> worksList) {
         this.worksList = worksList;
+    }
+
+    public int getIdCountry() {
+        return idCountry;
+    }
+    public void setIdCountry(int idCountry) {
+        this.idCountry = idCountry;
     }
 }
