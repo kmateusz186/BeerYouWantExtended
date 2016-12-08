@@ -70,17 +70,17 @@ public class BeerDao implements Dao<Beer> {
                 new String[] { String.valueOf(id)},
                 null, null, null, "1");
         if(c.moveToFirst()) {
-            beer = new Beer();
+            beer = new Beer(c.getInt(0), c.getString(1), c.getInt(2), c.getInt(3));
             //student = this.buildStudentFromCursor(c);
-            beer.setIdBeer(c.getInt(0));
+            /*beer.setIdBeer(c.getInt(0));
             beer.setNameBeer(c.getString(1));
             beer.setStyle(c.getInt(2));
-            beer.setWorks(c.getInt(3));
+            beer.setWorks(c.getInt(3));*/
         }
         if(!c.isClosed()) {
             c.close();
         }
-        return student;
+        return beer;
     }
 
     @Override

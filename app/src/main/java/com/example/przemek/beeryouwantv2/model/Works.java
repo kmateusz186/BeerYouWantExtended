@@ -13,21 +13,32 @@ public class Works {
     private int favouriteWorks;
     private String nameWorks;
     private String descriptionWorks;
+    private int idProvince;
     private Province province;
-    private Country country;
     private List<Beer> beersList;
 
     public Works() {
         this.beersList = new ArrayList<>();
     }
-    public Works(int idWorks, String nameWorks, int imageResourceID, String descriptionWorks, Province province, Country country, int favouriteWorks, List<Beer> beersList) {
+
+    public Works(int idWorks, int imageResourceID, int favouriteWorks, String nameWorks, String descriptionWorks, int idProvince) {
+        this.idWorks = idWorks;
+        this.imageResourceID = imageResourceID;
+        this.favouriteWorks = favouriteWorks;
+        this.nameWorks = nameWorks;
+        this.descriptionWorks = descriptionWorks;
+        this.idProvince = idProvince;
+        this.province = new Province();
+        this.beersList = new ArrayList<>();
+    }
+
+    public Works(int idWorks, String nameWorks, int imageResourceID, String descriptionWorks, Province province, int favouriteWorks, List<Beer> beersList) {
         this.idWorks = idWorks;
         this.imageResourceID = imageResourceID;
         this.favouriteWorks = favouriteWorks;
         this.nameWorks = nameWorks;
         this.descriptionWorks = descriptionWorks;
         this.province = province;
-        this.country = country;
         this.beersList = beersList;
     }
 
@@ -73,17 +84,17 @@ public class Works {
         this.province = province;
     }
 
-    public Country getCountry() {
-        return country;
-    }
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
     public List<Beer> getBeersList() {
         return beersList;
     }
     public void setBeersList(List<Beer> beersList) {
         this.beersList = beersList;
+    }
+
+    public int getIdProvince() {
+        return idProvince;
+    }
+    public void setIdProvince(int idProvince) {
+        this.idProvince = idProvince;
     }
 }
