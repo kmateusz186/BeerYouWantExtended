@@ -26,7 +26,7 @@ public class BeerTable {
                 + "FOREIGN KEY(" + STYLE + ")"
                 + "REFERENCES " + StyleTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
                 + "FOREIGN KEY(" + WORKS + ")"
-                + "REFERENCES " + WorksTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
+                + "REFERENCES " + WorksTable.TABLE_NAME + "(" + BaseColumns._ID + ")"
                 + ")";
         db.execSQL(CREATE_BEER_TABLE);
         onInsert(db, new Beer(0, "Żywiec", null, null), 1, 2);

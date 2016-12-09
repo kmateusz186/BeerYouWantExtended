@@ -18,7 +18,7 @@ public class BMLevelTable {
     public static void onCreate(SQLiteDatabase db){
         String CREATE_BM_LEVEL_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + NAME_BMLEVEL + " TEXT,"
+                + NAME_BMLEVEL + " TEXT"
                 + ")";
         db.execSQL(CREATE_BM_LEVEL_TABLE);
         onInsert(db, new BMLevel(0, "Słaba", null));

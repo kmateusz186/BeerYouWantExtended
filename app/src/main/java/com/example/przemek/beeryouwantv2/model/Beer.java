@@ -20,8 +20,8 @@ public class Beer {
         this.nameBeer = nameBeer;
         this.style = style;
         this.works = works;
-        this.idStyle = style.getIdStyle();
-        this.idWorks = works.getIdWorks();
+        //this.idStyle = style.getIdStyle();
+        //this.idWorks = works.getIdWorks();
     }
 
     public Beer(int idBeer, String nameBeer, int idStyle, int idWorks) {

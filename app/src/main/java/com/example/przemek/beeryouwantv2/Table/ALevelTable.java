@@ -18,7 +18,7 @@ public class ALevelTable {
     public static void onCreate(SQLiteDatabase db){
         String CREATE_A_LEVEL_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + NAME_ALEVEL + " TEXT, "
+                + NAME_ALEVEL + " TEXT"
                 + ")";
         db.execSQL(CREATE_A_LEVEL_TABLE);
         onInsert(db, new ALevel(0, "Niska", null));

@@ -22,7 +22,7 @@ public class ProvinceTable {
                 + NAME_PROVINCE + " TEXT,"
                 + COUNTRY + " INTEGER,"
                 + "FOREIGN KEY(" + COUNTRY + ")"
-                + "REFERENCES " + CountryTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
+                + "REFERENCES " + CountryTable.TABLE_NAME + "(" + BaseColumns._ID + ")"
                 + ")";
         db.execSQL(CREATE_PROVINCE_TABLE);
         onInsert(db, new Province(0, "Małopolskie", null, null), 1);
