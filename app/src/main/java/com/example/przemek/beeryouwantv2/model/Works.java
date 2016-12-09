@@ -21,7 +21,7 @@ public class Works {
         this.beersList = new ArrayList<>();
     }
 
-    public Works(int idWorks, int imageResourceID, int favouriteWorks, String nameWorks, String descriptionWorks, int idProvince) {
+    public Works(int idWorks, String nameWorks,  int imageResourceID, String descriptionWorks, int idProvince, int favouriteWorks ) {
         this.idWorks = idWorks;
         this.imageResourceID = imageResourceID;
         this.favouriteWorks = favouriteWorks;
