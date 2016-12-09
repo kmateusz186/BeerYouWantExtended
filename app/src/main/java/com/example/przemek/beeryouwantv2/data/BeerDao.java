@@ -9,6 +9,7 @@ import android.provider.BaseColumns;
 import com.example.przemek.beeryouwantv2.Table.BeerTable;
 import com.example.przemek.beeryouwantv2.model.Beer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -85,6 +86,24 @@ public class BeerDao implements Dao<Beer> {
 
     @Override
     public List<Beer> getAll() {
-        return null;
+        Beer beer = null;
+        List<Beer> list = new ArrayList<>();
+        Cursor c = db.query(BeerTable.TABLE_NAME,
+                new String[] {
+                        BaseColumns._ID, BeerTable.NAME_BEER,
+                        BeerTable.STYLE, BeerTable.WORKS},
+                null, null, null, null, BeerTable.NAME_BEER, null);
+        if(c.moveToFirst()) {
+            do {
+                beer = new Beer(c.getInt(0), c.getString(1), c.getInt(2), c.getInt(3));
+                if (beer != null) {
+                    list.add(beer);
+                }
+            } while (c.moveToNext());
+        }
+        if(!c.isClosed()) {
+            c.close();
+        }
+        return list;
     }
 }
