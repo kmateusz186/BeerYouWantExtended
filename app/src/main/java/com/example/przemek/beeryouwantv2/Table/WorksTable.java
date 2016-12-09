@@ -1,4 +1,4 @@
-﻿package com.example.przemek.beeryouwantv2.Table;
+package com.example.przemek.beeryouwantv2.Table;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
