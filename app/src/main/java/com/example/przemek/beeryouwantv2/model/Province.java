@@ -30,7 +30,7 @@ public class Province {
         this.idProvince = idProvince;
         this.nameProvince = nameProvince;
         this.country = country;
-        this.idCountry = country.getIdCountry();
+        //this.idCountry = country.getIdCountry();
         this.worksList = worksList;
     }
 
