@@ -15,6 +15,11 @@ public class BMLevel {
     public BMLevel() {
         this.styleList = new ArrayList<>();
     }
+    public BMLevel(int idBMLevel, String nameBMLevel) {
+        this.idBMLevel = idBMLevel;
+        this.nameBMLevel = nameBMLevel;
+        this.styleList = new ArrayList<>();
+    }
     public BMLevel(int idBMLevel, String nameBMLevel, List<Style> styleList) {
         this.idBMLevel = idBMLevel;
         this.nameBMLevel = nameBMLevel;

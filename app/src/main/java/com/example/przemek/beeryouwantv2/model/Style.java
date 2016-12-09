@@ -13,6 +13,9 @@ public class Style {
     private String colorStyle;
     private String maltWheat;
     private String fermentation;
+    private int idAlcohol;
+    private int idMalt;
+    private int idBitter;
     private ALevel alcohol;
     private BMLevel malt;
     private BMLevel bitter;
@@ -21,6 +24,22 @@ public class Style {
     public Style() {
         this.beerList = new ArrayList<>();
     }
+
+    public Style(int idStyle, String nameStyle, String colorStyle, int idBitter, int idMalt, int idAlcohol, String maltWheat, String fermentation) {
+        this.idStyle = idStyle;
+        this.nameStyle = nameStyle;
+        this.colorStyle = colorStyle;
+        this.maltWheat = maltWheat;
+        this.fermentation = fermentation;
+        this.idAlcohol = idAlcohol;
+        this.idMalt = idMalt;
+        this.idBitter = idBitter;
+        this.alcohol = new ALevel();
+        this.malt = new BMLevel();
+        this.bitter = new BMLevel();
+        this.beerList = new ArrayList<>();
+    }
+
     public Style(int idStyle, String nameStyle, String colorStyle, String maltWheat, String fermentation, ALevel alcohol, BMLevel malt, BMLevel bitter, List<Beer> beerList) {
         this.idStyle = idStyle;
         this.nameStyle = nameStyle;
@@ -31,6 +50,10 @@ public class Style {
         this.malt = malt;
         this.bitter = bitter;
         this.beerList = beerList;
+        this.idAlcohol = alcohol.getIdALevel();
+        this.idMalt = malt.getIdBMLevel();
+        this.idBitter = bitter.getIdBMLevel();
+
     }
 
     public int getIdStyle() {
