@@ -2,6 +2,7 @@ package com.example.przemek.beeryouwantv2;
 
 
 import android.app.Fragment;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,8 @@ public class TopFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_top, container, false);
+        SQLiteOpenHelper openHelper = new OpenHelper(getActivity());
+        openHelper.getReadableDatabase();
         //cursor = db.query("WORKS", new String[]{"_id", "NAME"}, "FAVORITE = 1", null, null, null, null);
         /*listView = (ListView) view.findViewById(R.id.favorites_works);
 

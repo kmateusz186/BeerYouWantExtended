@@ -45,11 +45,11 @@ public class DataManagerImplementation implements DataManager {
 
         aLevelDao = new ALevelDao(db);
         bmLevelDao = new BMLevelDao(db);
-    //    beerDao = new BeerDao(db);
+        beerDao = new BeerDao(db);
         countryDao = new CountryDao(db);
-      //  provinceDao = new ProvinceDao(db);
-      //  styleDao = new StyleDao(db);
-     //   worksDao = new WorksDao(db);
+        provinceDao = new ProvinceDao(db);
+        styleDao = new StyleDao(db);
+        worksDao = new WorksDao(db);
 
     }
 
@@ -58,11 +58,11 @@ public class DataManagerImplementation implements DataManager {
             db = SQLiteDatabase.openDatabase(Data.DATABASE_PATH, null, SQLiteDatabase.OPEN_READWRITE);
             aLevelDao = new ALevelDao(db);
             bmLevelDao = new BMLevelDao(db);
-            //    beerDao = new BeerDao(db);
+            beerDao = new BeerDao(db);
             countryDao = new CountryDao(db);
-            //  provinceDao = new ProvinceDao(db);
-            //  styleDao = new StyleDao(db);
-            //   worksDao = new WorksDao(db);
+            provinceDao = new ProvinceDao(db);
+            styleDao = new StyleDao(db);
+            worksDao = new WorksDao(db);
         }
     }
     private void closeDatabase() {
