@@ -21,6 +21,7 @@ public class Works {
         this.beersList = new ArrayList<>();
     }
 
+
     public Works(int idWorks, String nameWorks,  int imageResourceID, String descriptionWorks, int idProvince, int favouriteWorks ) {
         this.idWorks = idWorks;
         this.imageResourceID = imageResourceID;
@@ -31,6 +32,7 @@ public class Works {
         this.province = new Province();
         this.beersList = new ArrayList<>();
     }
+
 
     public Works(int idWorks, String nameWorks, int imageResourceID, String descriptionWorks, Province province, int favouriteWorks, List<Beer> beersList) {
         this.idWorks = idWorks;
