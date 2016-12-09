@@ -15,7 +15,14 @@ public class Country {
     public Country() {
         this.provincesList = new ArrayList<>();
     }
-    public Country(int idCountry, String nameCountry, List<Province> provincesList) {
+
+    public Country(int idCountry, String nameCountry) {
+        this.idCountry = idCountry;
+        this.nameCountry = nameCountry;
+        this.provincesList = new ArrayList<>();
+    }
+
+    public Country(int idCountry, String nameCountry, List<Province> provincesList, List<Works> worksList) {
         this.idCountry = idCountry;
         this.nameCountry = nameCountry;
         this.provincesList = provincesList;
@@ -41,5 +48,4 @@ public class Country {
     public void setProvincesList(List<Province> provincesList) {
         this.provincesList = provincesList;
     }
-
 }

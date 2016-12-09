@@ -15,11 +15,17 @@ public class ALevel {
     public ALevel() {
         this.styleList = new ArrayList<>();
     }
+    public ALevel(int idALevel, String nameALevel) {
+        this.idALevel = idALevel;
+        this.nameALevel = nameALevel;
+        this.styleList = new ArrayList<>();
+    }
     public ALevel(int idALevel, String nameALevel, List<Style> styleList) {
         this.idALevel = idALevel;
         this.nameALevel = nameALevel;
         this.styleList = styleList;
     }
+
 
     public int getIdALevel() {
         return idALevel;

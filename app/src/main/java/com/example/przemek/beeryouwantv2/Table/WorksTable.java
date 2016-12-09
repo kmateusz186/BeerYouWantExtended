@@ -1,4 +1,4 @@
-package com.example.przemek.beeryouwantv2.Table;
+﻿package com.example.przemek.beeryouwantv2.Table;
 
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
@@ -28,7 +28,7 @@ public class WorksTable {
                 + PROVINCE + " INTEGER,"
                 + FAVOURITE + " INTEGER,"
                 + "FOREIGN KEY(" + PROVINCE + ")"
-                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + BaseColumns._ID + ")"
+                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
                 + ")";
         db.execSQL(CREATE_WORKS_TABLE);
 
@@ -45,13 +45,13 @@ public class WorksTable {
                 + "Producenci różnych stylów, między innymi Barley Wine, American Pale Ale, Grodziskie, a także Russian Imperial Stout.", null, 0, null), 1);
 
         onInsert(db, new Works(0, "Browar Ciechan",  R.drawable.ciechan_logo, "Browar mieszczący się w Ciechanowie. "
-                + "Aktualnie należy do spółki Browary Regionalne Jakubiak Sp. z o.o.", null, 0, null), 3);
+                + "Aktualnie należy do spółki Browary Regionalne Jakubiak Sp. z o.o.", null,  0, null), 3);
 
         onInsert(db, new Works(0, "Trzech Kumpli",  R.drawable.trzech_kumpli_logo, "Tarnowski kontraktowy browar lotny - gdyż nie posiada własnego browaru. "
-                + "Uwielbiają India Pale Ale, w związku z czym tworzą różne wariacje tego stylu.", null,  0, null), 1);
+                + "Uwielbiają India Pale Ale, w związku z czym tworzą różne wariacje tego stylu.", null, 0, null), 1);
 
         onInsert(db, new Works(0, "Browar Warka",  R.drawable.browar_warka_logo, "Powstały w 1968 roku. Wybrano Warkę z powodu długoletniej tradycji piwowarskiej tego miasta. "
-                + "Znany z piwa Warka Strong.", null,  0, null), 3);
+                + "Znany z piwa Warka Strong.", null, 0, null), 3);
 
         onInsert(db, new Works(0, "Browar Olimp",  R.drawable.olimp_logo, "Browar Olimp to inicjatywa kontraktowa powstała w czerwcu 2013 roku w Toruniu. "
                 + "Stworzyła ją dwójka piwnych fanatyków – Michał i Marcin. Michał Olszewski swoimi pomysłami od lat zmienia obraz rynku piwnego w Toruniu.", null,  0, null), 4);

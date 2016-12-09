@@ -7,6 +7,9 @@ package com.example.przemek.beeryouwantv2.model;
 public class Beer {
     private int idBeer;
     private String nameBeer;
+    private int idStyle;
+    private int idWorks;
+
     private Style style;
     private Works works;
 
@@ -17,6 +20,17 @@ public class Beer {
         this.nameBeer = nameBeer;
         this.style = style;
         this.works = works;
+        this.idStyle = style.getIdStyle();
+        this.idWorks = works.getIdWorks();
+    }
+
+    public Beer(int idBeer, String nameBeer, int idStyle, int idWorks) {
+        this.idBeer = idBeer;
+        this.nameBeer = nameBeer;
+        this.idStyle = idStyle;
+        this.idWorks = idWorks;
+        this.style = new Style();
+        this.works = new Works();
     }
 
     public int getIdBeer() {
@@ -45,5 +59,19 @@ public class Beer {
     }
     public void setWorks(Works works) {
         this.works = works;
+    }
+
+    public int getIdStyle() {
+        return idStyle;
+    }
+    public void setIdStyle(int idStyle) {
+        this.idStyle = idStyle;
+    }
+
+    public int getIdWorks() {
+        return idWorks;
+    }
+    public void setIdWorks(int idWorks) {
+        this.idWorks = idWorks;
     }
 }
