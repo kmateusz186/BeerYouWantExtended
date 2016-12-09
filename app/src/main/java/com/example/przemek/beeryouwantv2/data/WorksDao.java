@@ -6,7 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.provider.BaseColumns;
 
+import com.example.przemek.beeryouwantv2.Table.BeerTable;
 import com.example.przemek.beeryouwantv2.Table.WorksTable;
+import com.example.przemek.beeryouwantv2.model.Beer;
 import com.example.przemek.beeryouwantv2.model.Works;
 
 import java.util.ArrayList;
@@ -103,6 +105,29 @@ public class WorksDao implements Dao<Works> {
             } while (c.moveToNext());
         }
         if(!c.isClosed()) {
+            c.close();
+        }
+        return list;
+    }
+
+    public List<Beer> getBeersFromStyle(long worksId) {
+        List<Beer> list = new ArrayList<>();
+        String sql =
+                "select " + BeerTable.TABLE_NAME + "." + BaseColumns._ID + ", "
+                        + BeerTable.TABLE_NAME + "." + BeerTable.NAME_BEER + ", "
+                        + BeerTable.TABLE_NAME + "." + BeerTable.STYLE + ", "
+                        + BeerTable.TABLE_NAME + "." + BeerTable.WORKS + " from "
+                        + BeerTable.TABLE_NAME + ", " + WorksTable.TABLE_NAME + " where "
+                        + WorksTable.TABLE_NAME + "." + BaseColumns._ID + " = ? and " + BeerTable.TABLE_NAME + "." + BaseColumns._ID + " = "
+                        + WorksTable.TABLE_NAME + "." + BaseColumns._ID;
+        Cursor c = db.rawQuery(sql, new String[] { String.valueOf(worksId) });
+        if (c.moveToFirst()) {
+            do {
+                Beer beer = new Beer(c.getInt(0), c.getString(1), c.getInt(2), c.getInt(3));
+                list.add(beer);
+            } while (c.moveToNext());
+        }
+        if (!c.isClosed()) {
             c.close();
         }
         return list;
