@@ -28,7 +28,7 @@ public class WorksTable {
                 + PROVINCE + " INTEGER,"
                 + FAVOURITE + " INTEGER,"
                 + "FOREIGN KEY(" + PROVINCE + ")"
-                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
+                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + BaseColumns._ID + ")"
                 + ")";
         db.execSQL(CREATE_WORKS_TABLE);
 
