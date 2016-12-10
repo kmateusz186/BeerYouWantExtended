@@ -107,7 +107,7 @@ public class CountryDao implements Dao<Country> {
                         + ProvinceTable.TABLE_NAME + ", " + CountryTable.TABLE_NAME + " where "
                         + ProvinceTable.TABLE_NAME + "." + ProvinceTable.COUNTRY + " = ?";
         Cursor c = db.rawQuery(sql, new String[] { String.valueOf(countryId) });
-        System.out.println("SQL: " + sql);
+
         if (c.moveToFirst()) {
             do {
                 Province province = new Province(c.getInt(0), c.getString(1), c.getInt(2));

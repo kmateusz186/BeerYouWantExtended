@@ -115,7 +115,7 @@ public class DataManagerImplementation implements DataManager {
         if(country!=null) {
             country.getProvincesList().addAll(countryDao.getProvinces(country.getIdCountry()));
         }
-
+        System.out.println(country.getProvincesList().size());
         return country;
     }
 

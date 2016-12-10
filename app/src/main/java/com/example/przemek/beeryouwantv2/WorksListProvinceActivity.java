@@ -40,7 +40,7 @@ public class WorksListProvinceActivity extends AppCompatActivity {
         provinces = new ArrayList<>();
         provinces.clear();
         provinces.addAll(app.getDataManager().getCountry(countryNo).getProvincesList());
-        Log.v("Provinces", " " + provinces.get(0).getNameProvince());
+        //Log.v("Provinces", " " + provinces.get(0).getNameProvince());
         adapter = new ProvinceAdapter(getApplicationContext(), provinces);
         listView.setAdapter(adapter);
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -97,16 +97,18 @@ public class WorksListProvinceActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Toast.makeText(getApplicationContext(), "Kliknalem kraj :P", Toast.LENGTH_SHORT).show();
+                        System.out.println(province.getNameProvince());
                         //Intent intent = new Intent(getApplicationContext(), WorksListProvinceActivity.class);
                         //intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, province.getIdCountry());
                         //startActivity(intent);
                     }
                 });
+                tvName.setText(province.getNameProvince());
             }
             // Lookup view for data population
 
             // Populate the data into the template view using the data object
-            //tvName.setText(province.getNameProvince());
+
             // Return the completed view to render on screen
             return convertView;
         }
