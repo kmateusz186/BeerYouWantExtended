@@ -3,9 +3,13 @@ package com.example.przemek.beeryouwantv2;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.os.IBinder;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +21,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.przemek.beeryouwantv2.TimeOfAppRunningService.LocalBinder;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +33,22 @@ public class MainActivity extends AppCompatActivity {
     private int currentPosition;
     private String[] titles;
     private ActionBarDrawerToggle drawerToggle;
+    private TimeOfAppRunningService timeService;
+    boolean mBound = false;
+
+    private ServiceConnection mServiceConnection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mBound = false;
+        }
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            LocalBinder myBinder = (LocalBinder) service;
+            timeService = myBinder.getService();
+            mBound = true;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +110,21 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        bindService(new Intent(getApplicationContext(), TimeOfAppRunningService.class), mServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if(mBound){
+            unbindService(mServiceConnection);
+            mBound = false;
+        }
     }
 
     @Override
@@ -160,6 +199,9 @@ public class MainActivity extends AppCompatActivity {
         }
         switch (item.getItemId()) {
             case R.id.action_settings:
+                return true;
+            case R.id.get_time:
+                timeService.getTime();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
