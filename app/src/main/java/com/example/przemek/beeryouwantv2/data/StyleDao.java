@@ -126,8 +126,7 @@ public class StyleDao implements Dao<Style> {
                         + BeerTable.TABLE_NAME + "." + BeerTable.STYLE + ", "
                         + BeerTable.TABLE_NAME + "." + BeerTable.WORKS + " from "
                         + BeerTable.TABLE_NAME + ", " + StyleTable.TABLE_NAME + " where "
-                        + StyleTable.TABLE_NAME + "." + BaseColumns._ID + " = ? and " + BeerTable.TABLE_NAME + "." + BaseColumns._ID + " = "
-                        + StyleTable.TABLE_NAME + "." + BaseColumns._ID;
+                        + BeerTable.TABLE_NAME + "." + BaseColumns._ID + " = ?";
         Cursor c = db.rawQuery(sql, new String[] { String.valueOf(styleId) });
         if (c.moveToFirst()) {
             do {
@@ -137,6 +136,462 @@ public class StyleDao implements Dao<Style> {
         }
         if (!c.isClosed()) {
             c.close();
+        }
+        return list;
+    }
+
+    public List<Style> getChosenStyles(String color, int bitter, int malt, int alcohol, String wheat_malt, String fermentation) {
+        List<Style> list = new ArrayList<>();
+        Cursor cursor = null;
+        if (!color.equals("unknown")) {
+            if (bitter != 0) {
+                if (malt != 0) {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ? AND ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ? AND ALCOHOL = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(malt)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                } else {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND ALCOHOL = ?",
+                                        new String[]{color, Integer.toString(bitter), Integer.toString(alcohol)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, Integer.toString(bitter), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(bitter), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND BITTER = ?",
+                                        new String[]{color, Integer.toString(bitter)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                }
+            } else {
+                if (malt != 0) {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(malt), Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, Integer.toString(malt), Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ? AND ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(malt), Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ? AND ALCOHOL = ?",
+                                        new String[]{color, Integer.toString(malt), Integer.toString(alcohol)},
+                                        null, null, null
+                                );
+                            }
+
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(malt), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, Integer.toString(malt), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(malt), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT = ?",
+                                        new String[]{color, Integer.toString(malt)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                } else {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{color, Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND ALCOHOL = ?",
+                                        new String[]{color, Integer.toString(alcohol)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{color, wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND MALT_WHEAT = ?",
+                                        new String[]{color, wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ? AND FERMENTATION = ?",
+                                        new String[]{color, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query("STYLE", new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "COLOR = ?",
+                                        new String[]{color},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        } else {
+            if (bitter != 0) {
+                if (malt != 0) {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ? AND ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ? AND ALCOHOL = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt), Integer.toString(alcohol)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ? AND MALT_WHEAT = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(malt)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                } else {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND MALT_WHEAT = ?",
+                                        new String[]{Integer.toString(bitter), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(bitter), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "BITTER = ?",
+                                        new String[]{Integer.toString(bitter)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                }
+            } else {
+                if (malt != 0) {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(malt), Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ? AND ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{Integer.toString(malt), Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ? AND ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(malt), Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ? AND ALCOHOL = ?",
+                                        new String[]{Integer.toString(malt), Integer.toString(alcohol)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(malt), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ? AND MALT_WHEAT = ?",
+                                        new String[]{Integer.toString(malt), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(malt), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT = ?",
+                                        new String[]{Integer.toString(malt)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                } else {
+                    if (alcohol != 0) {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "ALCOHOL = ? AND MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(alcohol), wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "ALCOHOL = ? AND MALT_WHEAT = ?",
+                                        new String[]{Integer.toString(alcohol), wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "ALCOHOL = ? AND FERMENTATION = ?",
+                                        new String[]{Integer.toString(alcohol), fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "ALCOHOL = ?",
+                                        new String[]{Integer.toString(alcohol)},
+                                        null, null, null
+                                );
+                            }
+                        }
+                    } else {
+                        if (!wheat_malt.equals("unknown")) {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT_WHEAT = ? AND FERMENTATION = ?",
+                                        new String[]{wheat_malt, fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "MALT_WHEAT = ?",
+                                        new String[]{wheat_malt},
+                                        null, null, null
+                                );
+                            }
+                        } else {
+                            if (!fermentation.equals("unknown")) {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, "FERMENTATION = ?",
+                                        new String[]{fermentation},
+                                        null, null, null
+                                );
+                            } else {
+                                cursor = db.query(StyleTable.TABLE_NAME, new String[]{BaseColumns._ID, StyleTable.NAME_STYLE}, null,
+                                        null,
+                                        null, null, null
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if (cursor.moveToFirst()) {
+            do {
+                Style style = new Style(cursor.getInt(0), cursor.getString(1));
+                list.add(style);
+            } while (cursor.moveToNext());
+        }
+        if (!cursor.isClosed()) {
+            cursor.close();
         }
         return list;
     }
