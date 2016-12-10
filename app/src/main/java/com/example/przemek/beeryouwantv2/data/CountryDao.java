@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteStatement;
 import android.provider.BaseColumns;
 
 import com.example.przemek.beeryouwantv2.Table.CountryTable;
+import com.example.przemek.beeryouwantv2.Table.ProvinceTable;
 import com.example.przemek.beeryouwantv2.model.Country;
+import com.example.przemek.beeryouwantv2.model.Province;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +92,28 @@ public class CountryDao implements Dao<Country> {
             } while (c.moveToNext());
         }
         if(!c.isClosed()) {
+            c.close();
+        }
+        return list;
+    }
+
+    public List<Province> getProvinces(long countryId) {
+        List<Province> list = new ArrayList<>();
+        String sql =
+                "select " + ProvinceTable.TABLE_NAME + "." + BaseColumns._ID + ", "
+                        + ProvinceTable.TABLE_NAME + "." + ProvinceTable.NAME_PROVINCE + ", "
+                        + ProvinceTable.TABLE_NAME + "." + ProvinceTable.COUNTRY + " from "
+                        + ProvinceTable.TABLE_NAME + ", " + CountryTable.TABLE_NAME + " where "
+                        + CountryTable.TABLE_NAME + "." + BaseColumns._ID + " = ? and " + ProvinceTable.TABLE_NAME + "." + BaseColumns._ID + " = "
+                        + CountryTable.TABLE_NAME + "." + BaseColumns._ID;
+        Cursor c = db.rawQuery(sql, new String[] { String.valueOf(countryId) });
+        if (c.moveToFirst()) {
+            do {
+                Province province = new Province(c.getInt(0), c.getString(1), c.getInt(2));
+                list.add(province);
+            } while (c.moveToNext());
+        }
+        if (!c.isClosed()) {
             c.close();
         }
         return list;
