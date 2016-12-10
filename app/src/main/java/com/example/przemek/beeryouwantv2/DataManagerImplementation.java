@@ -38,7 +38,7 @@ public class DataManagerImplementation implements DataManager {
     private StyleDao styleDao;
     private WorksDao worksDao;
 
-    private DataManagerImplementation(Context context){
+    public DataManagerImplementation(Context context){
         this.context = context;
         SQLiteOpenHelper openHelper = new OpenHelper(this.context);
         db = openHelper.getWritableDatabase();
@@ -112,6 +112,9 @@ public class DataManagerImplementation implements DataManager {
     @Override
     public Country getCountry(int idCountry) {
         Country country = countryDao.get(idCountry);
+        if(country!=null) {
+            country.getProvincesList().addAll(countryDao.getProvinces(country.getIdCountry()));
+        }
         return country;
     }
 
