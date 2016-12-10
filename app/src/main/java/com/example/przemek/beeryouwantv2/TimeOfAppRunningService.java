@@ -20,7 +20,6 @@ import java.util.Date;
 public class TimeOfAppRunningService extends Service{
 
     private final IBinder binder = new LocalBinder();
-    private Handler handler;
     long startTime, currentTime, duration;
     public class LocalBinder extends Binder {
         TimeOfAppRunningService getService() {
@@ -38,7 +37,6 @@ public class TimeOfAppRunningService extends Service{
         currentTime = System.currentTimeMillis();
         duration = currentTime - startTime;
         duration /= 1000;
-        duration += 3268;
         if(duration < 60){
             show += duration + "s";
         }else {
@@ -51,16 +49,12 @@ public class TimeOfAppRunningService extends Service{
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        handler = new Handler();
         startTime = System.currentTimeMillis();
-        System.out.println("onSBindTimeOf..");
-        Toast.makeText(getApplicationContext(), "WELCOME :>", Toast.LENGTH_SHORT).show();
         return binder;
     }
 
     @Override
     public void onDestroy() {
-
         super.onDestroy();
     }
 }
