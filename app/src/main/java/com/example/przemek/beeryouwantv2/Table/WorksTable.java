@@ -13,12 +13,10 @@ import com.example.przemek.beeryouwantv2.model.Works;
 
 public class WorksTable {
     public static final String TABLE_NAME = "works";
-    //public static final String ID_WORKS = "id_works";
     public static final String NAME_WORKS = "name";
     public static final String IMAGE_RESOURCE_ID = "image_resource_id";
     public static final String DESCRIPTION = "description";
     public static final String PROVINCE = "province";
-    public static final String COUNTRY = "country";
     public static final String FAVOURITE =  "favourite";
 
     public static void onCreate(SQLiteDatabase db){
@@ -30,7 +28,7 @@ public class WorksTable {
                 + PROVINCE + " INTEGER,"
                 + FAVOURITE + " INTEGER,"
                 + "FOREIGN KEY(" + PROVINCE + ")"
-                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + BaseColumns._ID + "),"
+                + "REFERENCES " + ProvinceTable.TABLE_NAME + "(" + BaseColumns._ID + ")"
                 + ")";
         db.execSQL(CREATE_WORKS_TABLE);
 
@@ -59,7 +57,7 @@ public class WorksTable {
                 + "Stworzyła ją dwójka piwnych fanatyków – Michał i Marcin. Michał Olszewski swoimi pomysłami od lat zmienia obraz rynku piwnego w Toruniu.", null,  0, null), 4);
 
         onInsert(db, new Works(0, "Doctor Brew",  R.drawable.doctor_brew_logo, "Browar kontraktowy stworzony przez dwóch pasjonatów. "
-                + "Piwa chmielone są najnowszymi, a także najciekawszymi odmianami chmielu. Wysoka goryczka i niepowtarzalny aromat piwa.", null,  0, null), 5);
+                + "Piwa chmielone są najnowszymi, a także najciekawszymi odmianami chmielu. Wysoka goryczka i niepowtarzalny aromat piwa.", null, 0, null), 5);
 
     }
 

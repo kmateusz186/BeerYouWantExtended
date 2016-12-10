@@ -18,10 +18,10 @@ public class CountryTable {
     public static void onCreate(SQLiteDatabase db){
         String CREATE_COUNTRY_TABLE = "CREATE TABLE " + TABLE_NAME + "("
                 + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + NAME_COUNTRY + " TEXT,"
+                + NAME_COUNTRY + " TEXT"
                 + ")";
         db.execSQL(CREATE_COUNTRY_TABLE);
-        onInsert(db, new Country(0,"Polska",null, null));
+        onInsert(db, new Country(0,"Polska",null));
     }
 
     public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

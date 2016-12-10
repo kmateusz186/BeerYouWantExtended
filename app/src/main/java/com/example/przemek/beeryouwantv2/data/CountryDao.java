@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import com.example.przemek.beeryouwantv2.Table.CountryTable;
 import com.example.przemek.beeryouwantv2.Table.ProvinceTable;
@@ -104,12 +105,13 @@ public class CountryDao implements Dao<Country> {
                         + ProvinceTable.TABLE_NAME + "." + ProvinceTable.NAME_PROVINCE + ", "
                         + ProvinceTable.TABLE_NAME + "." + ProvinceTable.COUNTRY + " from "
                         + ProvinceTable.TABLE_NAME + ", " + CountryTable.TABLE_NAME + " where "
-                        + CountryTable.TABLE_NAME + "." + BaseColumns._ID + " = ? and " + ProvinceTable.TABLE_NAME + "." + BaseColumns._ID + " = "
+                        + ProvinceTable.TABLE_NAME + "." + ProvinceTable.COUNTRY + " = ? and " + ProvinceTable.TABLE_NAME + "." + BaseColumns._ID + " = "
                         + CountryTable.TABLE_NAME + "." + BaseColumns._ID;
         Cursor c = db.rawQuery(sql, new String[] { String.valueOf(countryId) });
         if (c.moveToFirst()) {
             do {
                 Province province = new Province(c.getInt(0), c.getString(1), c.getInt(2));
+                Log.v("CountryDao", province.getNameProvince());
                 list.add(province);
             } while (c.moveToNext());
         }

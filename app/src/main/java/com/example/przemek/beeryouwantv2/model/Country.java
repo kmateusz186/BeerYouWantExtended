@@ -22,7 +22,7 @@ public class Country {
         this.provincesList = new ArrayList<>();
     }
 
-    public Country(int idCountry, String nameCountry, List<Province> provincesList, List<Works> worksList) {
+    public Country(int idCountry, String nameCountry, List<Province> provincesList) {
         this.idCountry = idCountry;
         this.nameCountry = nameCountry;
         this.provincesList = provincesList;

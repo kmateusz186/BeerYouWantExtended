@@ -50,9 +50,9 @@ public class Style {
         this.malt = malt;
         this.bitter = bitter;
         this.beerList = beerList;
-        this.idAlcohol = alcohol.getIdALevel();
-        this.idMalt = malt.getIdBMLevel();
-        this.idBitter = bitter.getIdBMLevel();
+        //this.idAlcohol = alcohol.getIdALevel();
+        //this.idMalt = malt.getIdBMLevel();
+        //this.idBitter = bitter.getIdBMLevel();
 
     }
 
