@@ -97,7 +97,7 @@ public class WorksListProvinceActivity extends AppCompatActivity {
                 tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getApplicationContext(), "Kliknalem kraj :P", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Kliknalem wojewodztwo", Toast.LENGTH_SHORT).show();
                         //Intent intent = new Intent(getApplicationContext(), WorksListProvinceActivity.class);
                         //intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, province.getIdCountry());
                         //startActivity(intent);

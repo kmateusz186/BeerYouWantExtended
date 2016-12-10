@@ -25,6 +25,11 @@ public class Style {
         this.beerList = new ArrayList<>();
     }
 
+    public Style(int idStyle, String nameStyle) {
+        this.idStyle = idStyle;
+        this.nameStyle = nameStyle;
+    }
+
     public Style(int idStyle, String nameStyle, String colorStyle, int idBitter, int idMalt, int idAlcohol, String maltWheat, String fermentation) {
         this.idStyle = idStyle;
         this.nameStyle = nameStyle;

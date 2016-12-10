@@ -146,6 +146,11 @@ public class DataManagerImplementation implements DataManager {
     }
 
     @Override
+    public List<Style> getChosenStyles(String color, int bitter, int malt, int alcohol, String wheat_malt, String fermentation) {
+        return styleDao.getChosenStyles(color, bitter, malt, alcohol, wheat_malt, fermentation);
+    }
+
+    @Override
     public Works getWorks(int idWorks) {
         Works works = worksDao.get(idWorks);
         return works;

@@ -118,8 +118,7 @@ public class WorksDao implements Dao<Works> {
                         + BeerTable.TABLE_NAME + "." + BeerTable.STYLE + ", "
                         + BeerTable.TABLE_NAME + "." + BeerTable.WORKS + " from "
                         + BeerTable.TABLE_NAME + ", " + WorksTable.TABLE_NAME + " where "
-                        + WorksTable.TABLE_NAME + "." + BaseColumns._ID + " = ? and " + BeerTable.TABLE_NAME + "." + BaseColumns._ID + " = "
-                        + WorksTable.TABLE_NAME + "." + BaseColumns._ID;
+                        + BeerTable.TABLE_NAME + "." + BaseColumns._ID + " = ?";
         Cursor c = db.rawQuery(sql, new String[] { String.valueOf(worksId) });
         if (c.moveToFirst()) {
             do {
