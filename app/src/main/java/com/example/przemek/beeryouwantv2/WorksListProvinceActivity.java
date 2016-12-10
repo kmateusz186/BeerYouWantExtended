@@ -41,7 +41,7 @@ public class WorksListProvinceActivity extends AppCompatActivity {
         provinces.clear();
         provinces.addAll(app.getDataManager().getCountry(countryNo).getProvincesList());
         Log.v("Provinces", " " + provinces.get(0).getNameProvince());
-        adapter = new ProvinceAdapter(getApplicationContext(), provinces);
+        adapter = new ProvinceAdapter(this, provinces);
         listView.setAdapter(adapter);
         /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -93,6 +93,7 @@ public class WorksListProvinceActivity extends AppCompatActivity {
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_province, parent, false);
                 tvName = (TextView) convertView.findViewById(R.id.tvNameProvince);
+                tvName.setText(province.getNameProvince());
                 tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -106,6 +107,7 @@ public class WorksListProvinceActivity extends AppCompatActivity {
             // Lookup view for data population
 
             // Populate the data into the template view using the data object
+            Log.v("Adapter", province.getNameProvince());
             //tvName.setText(province.getNameProvince());
             // Return the completed view to render on screen
             return convertView;
