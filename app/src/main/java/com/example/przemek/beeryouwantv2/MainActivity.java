@@ -32,9 +32,14 @@ public class MainActivity extends AppCompatActivity {
     private int currentPosition;
     private String[] titles;
     private ActionBarDrawerToggle drawerToggle;
+
+
+
     private TimeOfAppRunningService timeService;
     boolean mBound = false;
-
+    public TimeOfAppRunningService getTimeService() {
+        return timeService;
+    }
     private ServiceConnection mServiceConnection = new ServiceConnection() {
         @Override
         public void onServiceDisconnected(ComponentName name) {
@@ -118,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
         bindService(new Intent(getApplicationContext(), TimeOfAppRunningService.class), mServiceConnection, Context.BIND_AUTO_CREATE);
     }
     @Override
-    protected void onStop(){
-        super.onStop();
+    protected void onDestroy(){
+        super.onDestroy();
         if(mBound){
             unbindService(mServiceConnection);
             mBound = false;
