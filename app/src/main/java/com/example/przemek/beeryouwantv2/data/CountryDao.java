@@ -104,7 +104,7 @@ public class CountryDao implements Dao<Country> {
                 "select " + ProvinceTable.TABLE_NAME + "." + BaseColumns._ID + ", "
                         + ProvinceTable.TABLE_NAME + "." + ProvinceTable.NAME_PROVINCE + ", "
                         + ProvinceTable.TABLE_NAME + "." + ProvinceTable.COUNTRY + " from "
-                        + ProvinceTable.TABLE_NAME + ", " + CountryTable.TABLE_NAME + " where "
+                        + ProvinceTable.TABLE_NAME + " where "
                         + ProvinceTable.TABLE_NAME + "." + ProvinceTable.COUNTRY + " = ?";
         Cursor c = db.rawQuery(sql, new String[] { String.valueOf(countryId) });
         if (c.moveToFirst()) {

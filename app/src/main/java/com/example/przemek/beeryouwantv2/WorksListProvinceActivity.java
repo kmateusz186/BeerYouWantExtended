@@ -43,14 +43,6 @@ public class WorksListProvinceActivity extends AppCompatActivity {
         Log.v("Provinces", " " + provinces.get(0).getNameProvince());
         adapter = new ProvinceAdapter(this, provinces);
         listView.setAdapter(adapter);
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getBaseContext(), WorksListActivity.class);
-                intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, (int) l);
-                startActivity(intent);
-            }
-        }); */
         getSupportActionBar().setTitle(getResources().getString(R.string.works_list_province_activity_title));
     }
 
@@ -94,10 +86,10 @@ public class WorksListProvinceActivity extends AppCompatActivity {
                 tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getApplicationContext(), "Kliknalem wojewodztwo", Toast.LENGTH_SHORT).show();
-                        //Intent intent = new Intent(getApplicationContext(), WorksListProvinceActivity.class);
-                        //intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, province.getIdCountry());
-                        //startActivity(intent);
+                        //Toast.makeText(getApplicationContext(), "Kliknalem wojewodztwo", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), WorksListActivity.class);
+                        intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, province.getIdProvince());
+                        startActivity(intent);
                     }
                 });
             }

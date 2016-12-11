@@ -126,6 +126,9 @@ public class DataManagerImplementation implements DataManager {
     @Override
     public Province getProvince(int idProvince) {
         Province province = provinceDao.get(idProvince);
+        if(province!=null) {
+            province.getWorksList().addAll(provinceDao.getWorks(province.getIdProvince()));
+        }
         return province;
     }
 

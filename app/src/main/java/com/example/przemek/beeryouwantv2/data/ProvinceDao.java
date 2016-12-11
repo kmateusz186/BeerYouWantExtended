@@ -5,9 +5,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import com.example.przemek.beeryouwantv2.Table.ProvinceTable;
+import com.example.przemek.beeryouwantv2.Table.WorksTable;
 import com.example.przemek.beeryouwantv2.model.Province;
+import com.example.przemek.beeryouwantv2.model.Works;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +95,27 @@ public class ProvinceDao implements Dao<Province> {
             } while (c.moveToNext());
         }
         if(!c.isClosed()) {
+            c.close();
+        }
+        return list;
+    }
+
+    public List<Works> getWorks(long provinceId) {
+        List<Works> list = new ArrayList<>();
+        String sql =
+                "select " + WorksTable.TABLE_NAME + "." + BaseColumns._ID + ", "
+                        + WorksTable.TABLE_NAME + "." + WorksTable.NAME_WORKS + " from "
+                        + WorksTable.TABLE_NAME + " where "
+                        + WorksTable.TABLE_NAME + "." + WorksTable.PROVINCE + " = ?";
+        Cursor c = db.rawQuery(sql, new String[] { String.valueOf(provinceId) });
+        if (c.moveToFirst()) {
+            do {
+                Works works = new Works(c.getInt(0), c.getString(1));
+                Log.v("ProvinceDao", works.getNameWorks());
+                list.add(works);
+            } while (c.moveToNext());
+        }
+        if (!c.isClosed()) {
             c.close();
         }
         return list;

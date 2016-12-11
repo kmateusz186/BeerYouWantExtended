@@ -12,6 +12,7 @@
         <service
             android:name=".TimeOfAppRunningService"
             android:label="PM_BeerYouWant_Service" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ChosenStylesActivity" />
-        <activity android:name=".WorksListProvinceActivity"></activity>
+        <activity android:name=".WorksListProvinceActivity" />
+        <activity android:name=".WorksListActivity"></activity>
     </application>
 
 </manifest>
