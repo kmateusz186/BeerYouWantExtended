@@ -71,8 +71,8 @@ public class WorksListDetailActivity extends AppCompatActivity {
         description = works.getDescriptionWorks();
         provinceObject = app.getDataManager().getProvince(works.getIdProvince());
         //Log.v("WorksListDetailActivity", provinceObject.toString());
-        //province = provinceObject.getNameProvince();
-        //country = app.getDataManager().getCountry(provinceObject.getIdCountry()).getNameCountry();
+        province = provinceObject.getNameProvince();
+        country = app.getDataManager().getCountry(provinceObject.getIdCountry()).getNameCountry();
         isFavorite = (works.getFavouriteWorks() == 1);
 
         nameTextView.setText(name);
