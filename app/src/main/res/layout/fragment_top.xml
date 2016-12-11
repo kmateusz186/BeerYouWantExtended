@@ -54,12 +54,12 @@
         android:textSize="@dimen/welcome_text_hint"
         android:textStyle="bold" />
 
-    <!--<ListView
+    <ListView
         android:id="@+id/favorites_works"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="top"
         android:layout_weight="3"
-        android:paddingTop="@dimen/top_fragment_padding_top" /> -->
+        android:paddingTop="@dimen/top_fragment_padding_top" />
 
 </LinearLayout>

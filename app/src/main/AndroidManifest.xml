@@ -22,7 +22,9 @@
         </activity>
         <activity android:name=".ChosenStylesActivity" />
         <activity android:name=".WorksListProvinceActivity" />
-        <activity android:name=".WorksListActivity"></activity>
+        <activity android:name=".WorksListActivity" />
+        <activity android:name=".WorksListDetailActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

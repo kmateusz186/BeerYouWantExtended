@@ -49,7 +49,8 @@ public interface DataManager {
     Works getWorks(int idWorks );
     List<Works> getWorkses();
     /*int saveWorks( Works works);
-    boolean deleteWorks(int idWorks);
-    boolean updateWorks (Works works);*/
+    boolean deleteWorks(int idWorks); */
+    boolean updateWorks (Works works);
+    List<Works> getFavouriteWorks();
 
 }
