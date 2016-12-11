@@ -107,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
                         if (fragment instanceof WorksListCountryFragment) {
                             currentPosition = 2;
                         }
+                        if (fragment instanceof AlcoholicStrengthOfFragment) {
+                            currentPosition = 3;
+                        }
 
                         setActionBarTitle(currentPosition);
                         listView.setItemChecked(currentPosition, true);
@@ -176,6 +179,9 @@ public class MainActivity extends AppCompatActivity {
             case 2:
                 fragment = new WorksListCountryFragment();
                 break;
+            case 3:
+                fragment = new AlcoholicStrengthOfFragment();
+            break;
             default:
                 fragment = new TopFragment();
         }
