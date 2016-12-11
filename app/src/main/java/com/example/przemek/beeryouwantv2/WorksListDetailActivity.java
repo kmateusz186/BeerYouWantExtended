@@ -93,6 +93,7 @@ public class WorksListDetailActivity extends AppCompatActivity {
 
     public void onFavoriteClicked(View view) {
         //Toast.makeText(getApplicationContext(), "Kliknalem ulubione", Toast.LENGTH_SHORT).show();
+        works = app.getDataManager().getWorks(worksNo);
         if(favoriteCheckBox.isChecked()) {
             works.setFavouriteWorks(1);
             app.getDataManager().updateWorks(works);

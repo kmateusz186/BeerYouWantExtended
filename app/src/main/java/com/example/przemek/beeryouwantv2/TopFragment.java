@@ -79,6 +79,7 @@ public class TopFragment extends Fragment {
                     }
                 });
             }
+
             // Lookup view for data population
 
             // Populate the data into the template view using the data object

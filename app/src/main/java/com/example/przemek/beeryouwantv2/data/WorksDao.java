@@ -47,10 +47,10 @@ public class WorksDao implements Dao<Works> {
     @Override
     public void update(Works type) {
         final ContentValues values = new ContentValues();
-        values.put(WorksTable.NAME_WORKS, type.getNameWorks());
-        values.put(WorksTable.IMAGE_RESOURCE_ID, type.getImageResourceID());
-        values.put(WorksTable.DESCRIPTION, type.getDescriptionWorks());
-        values.put(WorksTable.PROVINCE, type.getProvince().getIdProvince());
+        //values.put(WorksTable.NAME_WORKS, type.getNameWorks());
+        //values.put(WorksTable.IMAGE_RESOURCE_ID, type.getImageResourceID());
+        //values.put(WorksTable.DESCRIPTION, type.getDescriptionWorks());
+        //values.put(WorksTable.PROVINCE, type.getProvince().getIdProvince());
         values.put(WorksTable.FAVOURITE, type.getFavouriteWorks());
         db.update(WorksTable.TABLE_NAME, values, BaseColumns._ID
                         + " = ?",
