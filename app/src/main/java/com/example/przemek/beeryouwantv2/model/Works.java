@@ -26,6 +26,13 @@ public class Works {
         this.nameWorks = nameWorks;
     }
 
+    public Works(int idWorks, String nameWorks, int idProvince) {
+        this.idWorks = idWorks;
+        this.nameWorks = nameWorks;
+        this.idProvince = idProvince;
+        this.province = new Province();
+    }
+
     public Works(int idWorks, String nameWorks, int imageResourceID, String descriptionWorks, int idProvince, int favouriteWorks ) {
         this.idWorks = idWorks;
         this.imageResourceID = imageResourceID;

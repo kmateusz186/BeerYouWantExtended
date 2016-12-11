@@ -156,11 +156,25 @@ public class DataManagerImplementation implements DataManager {
     @Override
     public Works getWorks(int idWorks) {
         Works works = worksDao.get(idWorks);
+        if(works!=null) {
+            works.getBeersList().addAll(worksDao.getBeersFromWorks(works.getIdWorks()));
+        }
         return works;
     }
 
     @Override
     public List<Works> getWorkses() {
         return worksDao.getAll();
+    }
+
+    @Override
+    public boolean updateWorks(Works works) {
+        worksDao.update(works);
+        return true;
+    }
+
+    @Override
+    public List<Works> getFavouriteWorks() {
+        return worksDao.getFavouriteWorks();
     }
 }

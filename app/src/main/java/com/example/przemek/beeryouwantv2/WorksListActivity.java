@@ -1,6 +1,7 @@
 package com.example.przemek.beeryouwantv2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -83,10 +84,10 @@ public class WorksListActivity extends AppCompatActivity {
                 tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getApplicationContext(), "Kliknalem browar", Toast.LENGTH_SHORT).show();
-                        //Intent intent = new Intent(getApplicationContext(), WorksListProvinceActivity.class);
-                        //intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, province.getIdCountry());
-                        //startActivity(intent);
+                        //Toast.makeText(getApplicationContext(), "Kliknalem browar", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), WorksListDetailActivity.class);
+                        intent.putExtra(WorksListDetailActivity.EXTRA_WORKSNO, works.getIdWorks());
+                        startActivity(intent);
                     }
                 });
             }

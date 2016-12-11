@@ -110,20 +110,41 @@ public class WorksDao implements Dao<Works> {
         return list;
     }
 
-    public List<Beer> getBeersFromStyle(long worksId) {
+    public List<Beer> getBeersFromWorks(long worksId) {
         List<Beer> list = new ArrayList<>();
         String sql =
                 "select " + BeerTable.TABLE_NAME + "." + BaseColumns._ID + ", "
                         + BeerTable.TABLE_NAME + "." + BeerTable.NAME_BEER + ", "
                         + BeerTable.TABLE_NAME + "." + BeerTable.STYLE + ", "
                         + BeerTable.TABLE_NAME + "." + BeerTable.WORKS + " from "
-                        + BeerTable.TABLE_NAME + ", " + WorksTable.TABLE_NAME + " where "
-                        + BeerTable.TABLE_NAME + "." + BaseColumns._ID + " = ?";
+                        + BeerTable.TABLE_NAME + " where "
+                        + BeerTable.TABLE_NAME + "." + BeerTable.WORKS + " = ?";
         Cursor c = db.rawQuery(sql, new String[] { String.valueOf(worksId) });
         if (c.moveToFirst()) {
             do {
                 Beer beer = new Beer(c.getInt(0), c.getString(1), c.getInt(2), c.getInt(3));
                 list.add(beer);
+            } while (c.moveToNext());
+        }
+        if (!c.isClosed()) {
+            c.close();
+        }
+        return list;
+    }
+
+    public List<Works> getFavouriteWorks() {
+        List<Works> list = new ArrayList<>();
+        String sql =
+                "select " + WorksTable.TABLE_NAME + "." + BaseColumns._ID + ", "
+                        + WorksTable.TABLE_NAME + "." + WorksTable.NAME_WORKS + ", "
+                        + WorksTable.TABLE_NAME + "." + WorksTable.PROVINCE + " from "
+                        + WorksTable.TABLE_NAME + " where "
+                        + WorksTable.TABLE_NAME + "." + WorksTable.FAVOURITE + " = ?";
+        Cursor c = db.rawQuery(sql, new String[] { String.valueOf(1) });
+        if (c.moveToFirst()) {
+            do {
+                Works works = new Works(c.getInt(0), c.getString(1), c.getInt(2));
+                list.add(works);
             } while (c.moveToNext());
         }
         if (!c.isClosed()) {
