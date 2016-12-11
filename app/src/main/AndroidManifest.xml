@@ -23,8 +23,10 @@
         <activity android:name=".ChosenStylesActivity" />
         <activity android:name=".WorksListProvinceActivity" />
         <activity android:name=".WorksListActivity" />
-        <activity android:name=".WorksListDetailActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".WorksListDetailActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ChosenStylesDetailActivity"></activity>
     </application>
 
 </manifest>
