@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 /**
@@ -21,7 +22,7 @@ public class AlcoholicStrengthOfFragment extends Fragment {
     private EditText weight, mlBeer, alcoholContent;
     private Button calculatePromil, startTime;
     private TextView velueOfPromil, timeSobering;
-    private double K, alcoholContentNumber = 5, mlBeerNumber = 500, weightNumber = 60, velueOfPromilNumber, timeSoberingNumber ;
+    private double K = 0.65, alcoholContentNumber = 5, mlBeerNumber = 500, weightNumber = 60, velueOfPromilNumber, timeSoberingNumber ;
     public AlcoholicStrengthOfFragment() {
     }
 
@@ -53,21 +54,29 @@ public class AlcoholicStrengthOfFragment extends Fragment {
 
         calculatePromil.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                alcoholContentNumber = Integer.parseInt(alcoholContent.getText().toString()) ;
-                mlBeerNumber = Integer.parseInt(mlBeer.getText().toString()) ;
-                weightNumber = Integer.parseInt(weight.getText().toString()) ;
-                double A = (mlBeerNumber * (alcoholContentNumber / 100) * 0.8 );
-                timeSoberingNumber =(A / 10) ;
-                velueOfPromilNumber = A / weightNumber * K;
-                velueOfPromil.setText( velueOfPromilNumber + "" );
-                timeSobering.setText(timeSoberingNumber + " h");
-                startTime.setVisibility(View.VISIBLE);
+                if (!isTextViewEmpty(alcoholContent) && !isTextViewEmpty(mlBeer) && !isTextViewEmpty(weight)) {
+                    alcoholContentNumber = Integer.parseInt(alcoholContent.getText().toString()) ;
+                    mlBeerNumber = Integer.parseInt(mlBeer.getText().toString()) ;
+                    weightNumber = Integer.parseInt(weight.getText().toString()) ;
+                    double A = (mlBeerNumber * (alcoholContentNumber / 100) * 0.8 );
+                    timeSoberingNumber =(A / 10) ;
+                    velueOfPromilNumber = A / weightNumber * K;
+                    velueOfPromil.setText( "Promile: " + velueOfPromilNumber  );
+                    timeSobering.setText( "Time to sobering: " + timeSoberingNumber + " h");
+                    startTime.setVisibility(View.VISIBLE);
+                }else{
+                    Toast.makeText(v.getContext(), "Empty Field", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
         startTime.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                velueOfPromil.setText("");
+                timeSobering.setText("");
+                startTime.setVisibility(View.INVISIBLE);
                 Intent intent = new Intent(v.getContext(), TimeOfAlcohol.class);
                 intent.putExtra("UniqueKeyV1", timeSoberingNumber);
                 v.getContext().startService(intent);
@@ -75,6 +84,12 @@ public class AlcoholicStrengthOfFragment extends Fragment {
 
             }
         });
+
+
         return view;
+    }
+    private boolean isTextViewEmpty(final TextView textView) {
+        return !((textView != null) && (textView.getText() != null) && (textView.getText().toString() != null) && !textView
+                .getText().toString().equals(""));
     }
 }
