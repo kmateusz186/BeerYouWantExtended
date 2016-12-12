@@ -10,10 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by Przemek on 11.12.2016.
@@ -60,7 +57,7 @@ public class AlcoholicStrengthOfFragment extends Fragment {
                 mlBeerNumber = Integer.parseInt(mlBeer.getText().toString()) ;
                 weightNumber = Integer.parseInt(weight.getText().toString()) ;
                 double A = (mlBeerNumber * (alcoholContentNumber / 100) * 0.8 );
-                timeSoberingNumber = A / 10;
+                timeSoberingNumber =(A / 10) ;
                 velueOfPromilNumber = A / weightNumber * K;
                 velueOfPromil.setText( velueOfPromilNumber + "" );
                 timeSobering.setText(timeSoberingNumber + " h");
