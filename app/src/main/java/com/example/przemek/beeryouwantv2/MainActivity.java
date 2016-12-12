@@ -7,20 +7,24 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.przemek.beeryouwantv2.TimeOfAppRunningService.LocalBinder;
 
@@ -32,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
     private int currentPosition;
     private String[] titles;
     private ActionBarDrawerToggle drawerToggle;
+    private boolean preferencesChanged = true;
+    int theme_number;
+
+    public static final String THEMES = "pref_chosenTheme";
 
 
 
@@ -57,8 +65,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String themes =
+                PreferenceManager.getDefaultSharedPreferences(this).getString(MainActivity.THEMES, null);
+        theme_number = Integer.parseInt(themes);
+        Log.v("MainActivity", theme_number + "");
+        Utils.setsTheme(theme_number);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+
+
+        // przypisuje domyślne wartości do SharedPreferences
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
+
+        // rejestruje obiekt nasłuchujący zmian SharedPreferences
+        PreferenceManager.getDefaultSharedPreferences(this).
+                registerOnSharedPreferenceChangeListener(preferencesChangeListener);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         listView = (ListView) findViewById(R.id.drawer_list);
         titles = getResources().getStringArray(R.array.titles);
@@ -116,13 +140,35 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-
-
     }
+
+    private SharedPreferences.OnSharedPreferenceChangeListener preferencesChangeListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+        @Override
+        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+            preferencesChanged = true; // użytkownik zmienił ustawienia aplikacji
+            Log.v("MainActivity", "Zmieniles ustawienia");
+            if (s.equals(THEMES)) {
+                String themes =
+                        sharedPreferences.getString(MainActivity.THEMES, null);
+                theme_number = Integer.parseInt(themes);
+                Utils.changeToTheme(MainActivity.this, theme_number);
+            }
+        }
+    };
 
     @Override
     protected void onStart(){
         super.onStart();
+        if (preferencesChanged) {
+            Log.v("MainActivity", "Zmieniles ustawienia");
+            String themes =
+                    PreferenceManager.getDefaultSharedPreferences(this).getString(MainActivity.THEMES, null);
+            theme_number = Integer.parseInt(themes);
+            Log.v("MainActivity", theme_number + "");
+            Utils.setsTheme(theme_number);
+            //Utils.changeToTheme(this, theme_number);
+            preferencesChanged = false;
+        }
         bindService(new Intent(getApplicationContext(), TimeOfAppRunningService.class), mServiceConnection, Context.BIND_AUTO_CREATE);
     }
     @Override
@@ -209,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
         }
         switch (item.getItemId()) {
             case R.id.action_settings:
+                Intent preferencesIntent = new Intent(this, SettingsActivity.class);
+                startActivity(preferencesIntent);
                 return true;
             case R.id.get_time:
                 timeService.getTime();
