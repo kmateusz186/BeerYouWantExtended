@@ -41,6 +41,7 @@ public interface DataManager {
 
     Style getStyle(int idStyle );
     List<Style> getStyles();
+    List<Style> getChosenStyles(String color, int bitter, int malt, int alcohol, String wheat_malt, String fermentation);
     /*int saveStyle( Style style);
     boolean deleteStyle(int idStyle);
     boolean updateStyle (Style Style);*/
@@ -48,7 +49,8 @@ public interface DataManager {
     Works getWorks(int idWorks );
     List<Works> getWorkses();
     /*int saveWorks( Works works);
-    boolean deleteWorks(int idWorks);
-    boolean updateWorks (Works works);*/
+    boolean deleteWorks(int idWorks); */
+    boolean updateWorks (Works works);
+    List<Works> getFavouriteWorks();
 
 }

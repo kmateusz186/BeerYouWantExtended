@@ -4,6 +4,7 @@
         <item>Strona główna</item>
         <item>Znajdź swoje piwo!</item>
         <item>Lista browarów</item>
+        <item>Obl stężnie %</item>
     </string-array>
     <string-array name="parameters_values_color">
         <item>Jasne</item>

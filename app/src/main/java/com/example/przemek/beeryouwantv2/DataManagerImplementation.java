@@ -127,6 +127,9 @@ public class DataManagerImplementation implements DataManager {
     @Override
     public Province getProvince(int idProvince) {
         Province province = provinceDao.get(idProvince);
+        if(province!=null) {
+            province.getWorksList().addAll(provinceDao.getWorks(province.getIdProvince()));
+        }
         return province;
     }
 
@@ -138,6 +141,9 @@ public class DataManagerImplementation implements DataManager {
     @Override
     public Style getStyle(int idStyle) {
         Style style = styleDao.get(idStyle);
+        if(style!=null) {
+            style.getBeerList().addAll(styleDao.getBeersFromStyle(style.getIdStyle()));
+        }
         return style;
     }
 
@@ -147,13 +153,32 @@ public class DataManagerImplementation implements DataManager {
     }
 
     @Override
+    public List<Style> getChosenStyles(String color, int bitter, int malt, int alcohol, String wheat_malt, String fermentation) {
+        return styleDao.getChosenStyles(color, bitter, malt, alcohol, wheat_malt, fermentation);
+    }
+
+    @Override
     public Works getWorks(int idWorks) {
         Works works = worksDao.get(idWorks);
+        if(works!=null) {
+            works.getBeersList().addAll(worksDao.getBeersFromWorks(works.getIdWorks()));
+        }
         return works;
     }
 
     @Override
     public List<Works> getWorkses() {
         return worksDao.getAll();
+    }
+
+    @Override
+    public boolean updateWorks(Works works) {
+        worksDao.update(works);
+        return true;
+    }
+
+    @Override
+    public List<Works> getFavouriteWorks() {
+        return worksDao.getFavouriteWorks();
     }
 }

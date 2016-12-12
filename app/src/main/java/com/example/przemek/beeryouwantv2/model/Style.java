@@ -25,6 +25,11 @@ public class Style {
         this.beerList = new ArrayList<>();
     }
 
+    public Style(int idStyle, String nameStyle) {
+        this.idStyle = idStyle;
+        this.nameStyle = nameStyle;
+    }
+
     public Style(int idStyle, String nameStyle, String colorStyle, int idBitter, int idMalt, int idAlcohol, String maltWheat, String fermentation) {
         this.idStyle = idStyle;
         this.nameStyle = nameStyle;
@@ -117,5 +122,29 @@ public class Style {
     }
     public void setBeerList(List<Beer> beerList) {
         this.beerList = beerList;
+    }
+
+    public int getIdAlcohol() {
+        return idAlcohol;
+    }
+
+    public void setIdAlcohol(int idAlcohol) {
+        this.idAlcohol = idAlcohol;
+    }
+
+    public int getIdMalt() {
+        return idMalt;
+    }
+
+    public void setIdMalt(int idMalt) {
+        this.idMalt = idMalt;
+    }
+
+    public int getIdBitter() {
+        return idBitter;
+    }
+
+    public void setIdBitter(int idBitter) {
+        this.idBitter = idBitter;
     }
 }

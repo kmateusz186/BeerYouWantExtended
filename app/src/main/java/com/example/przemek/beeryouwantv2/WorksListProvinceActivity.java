@@ -40,17 +40,9 @@ public class WorksListProvinceActivity extends AppCompatActivity {
         provinces = new ArrayList<>();
         provinces.clear();
         provinces.addAll(app.getDataManager().getCountry(countryNo).getProvincesList());
-        //Log.v("Provinces", " " + provinces.get(0).getNameProvince());
-        adapter = new ProvinceAdapter(getApplicationContext(), provinces);
+        Log.v("Provinces", " " + provinces.get(0).getNameProvince());
+        adapter = new ProvinceAdapter(this, provinces);
         listView.setAdapter(adapter);
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(getBaseContext(), WorksListActivity.class);
-                intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, (int) l);
-                startActivity(intent);
-            }
-        }); */
         getSupportActionBar().setTitle(getResources().getString(R.string.works_list_province_activity_title));
     }
 
@@ -64,10 +56,7 @@ public class WorksListProvinceActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-            case R.id.action_settings:
+            case R.id.get_time:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -93,14 +82,14 @@ public class WorksListProvinceActivity extends AppCompatActivity {
             if (convertView == null) {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_province, parent, false);
                 tvName = (TextView) convertView.findViewById(R.id.tvNameProvince);
+                tvName.setText(province.getNameProvince());
                 tvName.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getApplicationContext(), "Kliknalem kraj :P", Toast.LENGTH_SHORT).show();
-                        System.out.println(province.getNameProvince());
-                        //Intent intent = new Intent(getApplicationContext(), WorksListProvinceActivity.class);
-                        //intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, province.getIdCountry());
-                        //startActivity(intent);
+                        //Toast.makeText(getApplicationContext(), "Kliknalem wojewodztwo", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), WorksListActivity.class);
+                        intent.putExtra(WorksListActivity.EXTRA_PROVINCENO, province.getIdProvince());
+                        startActivity(intent);
                     }
                 });
                 tvName.setText(province.getNameProvince());
@@ -108,7 +97,8 @@ public class WorksListProvinceActivity extends AppCompatActivity {
             // Lookup view for data population
 
             // Populate the data into the template view using the data object
-
+            Log.v("Adapter", province.getNameProvince());
+            //tvName.setText(province.getNameProvince());
             // Return the completed view to render on screen
             return convertView;
         }
