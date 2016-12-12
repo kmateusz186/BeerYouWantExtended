@@ -126,7 +126,7 @@ public class StyleDao implements Dao<Style> {
                         + BeerTable.TABLE_NAME + "." + BeerTable.STYLE + ", "
                         + BeerTable.TABLE_NAME + "." + BeerTable.WORKS + " from "
                         + BeerTable.TABLE_NAME + " where "
-                        + BeerTable.TABLE_NAME + "." + BeerTable.STYLE+ " = ?";
+                        + BeerTable.TABLE_NAME + "." + BeerTable.STYLE + " = ?";
         Cursor c = db.rawQuery(sql, new String[] { String.valueOf(styleId) });
         if (c.moveToFirst()) {
             do {
