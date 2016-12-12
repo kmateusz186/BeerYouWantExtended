@@ -39,7 +39,7 @@ public class TimeOfAlcohol extends Service implements Serializable {
                     NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                     notificationManager.notify(0, notification);
                 }
-            },(int) time * 1000 );
+            },(int) time * 1000 * 5 );
         }
 
     @Override
