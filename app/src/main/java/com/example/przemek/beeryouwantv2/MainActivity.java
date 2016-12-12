@@ -181,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 3:
                 fragment = new AlcoholicStrengthOfFragment();
-            break;
+                break;
             default:
                 fragment = new TopFragment();
         }

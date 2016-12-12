@@ -12,6 +12,9 @@
         <service
             android:name=".TimeOfAppRunningService"
             android:label="PM_BeerYouWant_Service" />
+        <service
+            android:name=".TimeOfAlcohol"
+            android:label="PM_BeerYouWant_TimeOfAlcohol" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
