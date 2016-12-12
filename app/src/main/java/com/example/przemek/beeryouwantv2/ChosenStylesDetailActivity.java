@@ -48,6 +48,7 @@ public class ChosenStylesDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_chosen_styles_detail);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         styleNo = getIntent().getExtras().getInt(EXTRA_STYLENO);
@@ -86,22 +87,6 @@ public class ChosenStylesDetailActivity extends AppCompatActivity {
         beers.addAll(style.getBeerList());
         adapter = new BeerAdapter(this, beers);
         listView.setAdapter(adapter);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private class BeerAdapter extends ArrayAdapter<Beer> {

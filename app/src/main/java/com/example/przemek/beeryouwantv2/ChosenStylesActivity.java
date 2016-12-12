@@ -44,6 +44,7 @@ public class ChosenStylesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_chosen_styles);
         listView = (ListView) findViewById(R.id.chosen_styles_list);
         colors = getResources().getStringArray(R.array.parameters_values_color);

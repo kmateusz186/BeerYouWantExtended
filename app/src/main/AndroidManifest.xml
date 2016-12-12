@@ -15,7 +15,7 @@
         <service
             android:name=".TimeOfAlcohol"
             android:label="PM_BeerYouWant_TimeOfAlcohol"
-            android:process=":stocks_background"/>
+            android:process=":stocks_background" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -30,7 +30,9 @@
         <activity
             android:name=".WorksListDetailActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".ChosenStylesDetailActivity"></activity>
+        <activity android:name=".ChosenStylesDetailActivity" />
+        <activity android:name=".SettingsActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

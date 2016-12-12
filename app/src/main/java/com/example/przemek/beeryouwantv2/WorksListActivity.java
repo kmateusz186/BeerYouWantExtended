@@ -32,6 +32,7 @@ public class WorksListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_works_list);
         app = (MyApplication) getApplication();
         listView = (ListView) findViewById(R.id.works_list);
@@ -43,22 +44,6 @@ public class WorksListActivity extends AppCompatActivity {
         adapter = new WorksAdapter(this, workses);
         listView.setAdapter(adapter);
         getSupportActionBar().setTitle(getResources().getString(R.string.works_list_activity_title));
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_settings:
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private class WorksAdapter extends ArrayAdapter<Works> {
