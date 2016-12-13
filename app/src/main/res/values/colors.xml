@@ -8,4 +8,12 @@
     <color name="chosen_style_detail_parameters">#ae6102</color>
     <color name="black">#000</color>
 
+    <color name="colorPrimaryFirst">#795548</color>
+    <color name="colorPrimaryDarkFirst">#5D4037</color>
+    <color name="colorAccentFirst">#FF5722</color>
+
+    <color name="colorPrimarySecond">#607D8B</color>
+    <color name="colorPrimaryDarkSecond">#455A64</color>
+    <color name="colorAccentSecond">#009688</color>
+
 </resources>

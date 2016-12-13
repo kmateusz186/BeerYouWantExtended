@@ -18,6 +18,18 @@
         <item>Górna</item>
         <item>Dolna</item>
     </string-array>
+    <string-array name="theme_list_for_settings">
+        <item>Niebieski</item>
+        <item>Piwny</item>
+        <item>Szary</item>
+    </string-array>
+    <string-array name="theme_list">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="chosenTheme">Wybór motywu</string>
+    <string name="chosenThemeSummary">Wybiera dany motyw dla aplikacji</string>
     <string name="open_drawer">Otwórz szufladę</string>
     <string name="close_drawer">Zamknij szufladę</string>
     <string name="action_settings">Ustawienia</string>
