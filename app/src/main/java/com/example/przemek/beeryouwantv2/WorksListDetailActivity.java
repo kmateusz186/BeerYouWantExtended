@@ -112,14 +112,14 @@ public class WorksListDetailActivity extends AppCompatActivity {
         if(favoriteCheckBox.isChecked()) {
             works.setFavouriteWorks(1);
             app.getDataManager().updateWorks(works);
+            Intent intent = new Intent();
+            intent.setAction("my_own_action");
+            intent.putExtra(EXTRA_MESSAGE, message);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
         } else {
             works.setFavouriteWorks(0);
             app.getDataManager().updateWorks(works);
         }
-        Intent intent = new Intent();
-        intent.setAction("my_own_action");
-        intent.putExtra(EXTRA_MESSAGE, message);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
     }
 
     private class BeerAdapter extends ArrayAdapter<Beer> {
