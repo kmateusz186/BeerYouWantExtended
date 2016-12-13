@@ -67,7 +67,7 @@ public class WorksListDetailActivity extends AppCompatActivity {
         filter.addAction("my_own_action");
         LocalBroadcastManager.getInstance(this).registerReceiver(myReceiver, filter);
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         worksNo = getIntent().getExtras().getInt(EXTRA_WORKSNO);
         nameTextView = (TextView) findViewById(R.id.works_detail_name);
