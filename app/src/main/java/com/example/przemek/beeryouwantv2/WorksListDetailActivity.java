@@ -3,7 +3,9 @@ package com.example.przemek.beeryouwantv2;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
 public class WorksListDetailActivity extends AppCompatActivity {
 
     public final static String EXTRA_WORKSNO = "works";
+    public final static String EXTRA_MESSAGE = "message";
     MyApplication app;
     BeerAdapter adapter;
     private int worksNo;
@@ -50,13 +53,22 @@ public class WorksListDetailActivity extends AppCompatActivity {
     private ArrayList<Beer> beers;
 
     Works works;
+    String message;
+    MyReceiver myReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_works_list_detail);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        myReceiver = new MyReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("my_own_action");
+        LocalBroadcastManager.getInstance(this).registerReceiver(myReceiver, filter);
+
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         worksNo = getIntent().getExtras().getInt(EXTRA_WORKSNO);
         nameTextView = (TextView) findViewById(R.id.works_detail_name);
         imageView = (ImageView) findViewById(R.id.works_detail_image);
@@ -93,11 +105,17 @@ public class WorksListDetailActivity extends AppCompatActivity {
     }
 
     public void onFavoriteClicked(View view) {
-        //Toast.makeText(getApplicationContext(), "Kliknalem ulubione", Toast.LENGTH_SHORT).show();
         works = app.getDataManager().getWorks(worksNo);
+        message = "Dodano do ulubionych " + works.getNameWorks() + " !";
+        //Toast.makeText(getApplicationContext(), "Kliknalem ulubione", Toast.LENGTH_SHORT).show();
+
         if(favoriteCheckBox.isChecked()) {
             works.setFavouriteWorks(1);
             app.getDataManager().updateWorks(works);
+            Intent intent = new Intent();
+            intent.setAction("my_own_action");
+            intent.putExtra(EXTRA_MESSAGE, message);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
         } else {
             works.setFavouriteWorks(0);
             app.getDataManager().updateWorks(works);
