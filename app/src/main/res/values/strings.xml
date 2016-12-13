@@ -64,6 +64,7 @@
     <string name="works_detail_location"> %1$s, %2$s</string>
     <string name="works_detail_title">Wybrany browar</string>
     <string name="works_detail_favorite"><u>Lubię!</u></string>
+    <string name="favorite_works">Ulubione browary</string>
     <string name="beer_ml">Beer [Ml]</string>
     <string name="alcohol_content">Alcohol Content [%]</string>
     <string name="weight">Weight [kg]</string>
