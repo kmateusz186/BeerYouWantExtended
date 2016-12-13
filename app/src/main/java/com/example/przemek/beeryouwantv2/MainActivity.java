@@ -67,10 +67,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         String themes =
                 PreferenceManager.getDefaultSharedPreferences(this).getString(MainActivity.THEMES, null);
-        theme_number = Integer.parseInt(themes);
-        Log.v("MainActivity", theme_number + "");
-        Utils.setsTheme(theme_number);
-        Utils.onActivityCreateSetTheme(this);
+        if(themes!=null) {
+            theme_number = Integer.parseInt(themes);
+            Log.v("MainActivity", theme_number + "");
+            Utils.setsTheme(theme_number);
+            Utils.onActivityCreateSetTheme(this);
+        }
+
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
