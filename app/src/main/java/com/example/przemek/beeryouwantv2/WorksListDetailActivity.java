@@ -84,7 +84,7 @@ public class WorksListDetailActivity extends AppCompatActivity {
 
         beers = new ArrayList<>();
         beers.clear();
-        beers.addAll(app.getDataManager().getWorks(worksNo).getBeersList());
+        beers.addAll(works.getBeersList());
         adapter = new BeerAdapter(this, beers);
         listView.setAdapter(adapter);
 

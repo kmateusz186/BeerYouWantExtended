@@ -140,6 +140,9 @@ public class DataManagerImplementation implements DataManager {
     @Override
     public Style getStyle(int idStyle) {
         Style style = styleDao.get(idStyle);
+        if(style!=null) {
+            style.getBeerList().addAll(styleDao.getBeersFromStyle(style.getIdStyle()));
+        }
         return style;
     }
 
