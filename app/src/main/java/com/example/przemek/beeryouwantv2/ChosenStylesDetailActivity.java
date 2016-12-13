@@ -50,7 +50,7 @@ public class ChosenStylesDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_chosen_styles_detail);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         styleNo = getIntent().getExtras().getInt(EXTRA_STYLENO);
         app = (MyApplication) getApplication();
 
