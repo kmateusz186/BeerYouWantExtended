@@ -9,18 +9,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:inputType="number"
-    android:hint="Beer [Ml]"/>
+    android:hint="@string/beer_ml"/>
     <EditText android:id="@+id/alcoholContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="Alcohol Content [%]"/>
+        android:hint="@string/alcohol_content"/>
     <EditText
         android:id="@+id/weight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="Weight [kg]"/>
+        android:hint="@string/weight"/>
     <RadioGroup
         android:id="@+id/sex"
         android:layout_width="match_parent"
@@ -34,19 +34,19 @@
             android:id="@+id/radio_woman"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Woman" />
+            android:text="@string/woman" />
 
         <RadioButton
             android:id="@+id/radio_man"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Man" />
+            android:text="@string/man" />
     </RadioGroup>
     <Button
         android:id="@+id/calculatePromil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculate promile"
+        android:text="@string/calculate_promile"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:background="@color/welcome_button"
@@ -73,7 +73,7 @@
         android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start"
+        android:text="@string/start"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:background="@color/welcome_button"
