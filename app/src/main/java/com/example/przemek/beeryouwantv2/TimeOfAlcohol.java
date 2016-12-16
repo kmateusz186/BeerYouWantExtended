@@ -30,7 +30,7 @@ public class TimeOfAlcohol extends Service implements Serializable {
                     Notification notification = new Notification.Builder(getApplicationContext())
                             .setContentTitle("Jesteś trzeźwy")
                             .setContentText("Dobra czas wstawać i do pracy")
-                            .setSmallIcon(R.drawable.browar_warka_logo)
+                            .setSmallIcon(R.drawable.notification_image)
                             .setContentIntent(pIntent)
                             .setAutoCancel(true)
                             .setPriority(Notification.PRIORITY_MAX)
