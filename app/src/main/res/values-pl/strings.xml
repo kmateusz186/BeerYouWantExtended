@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">BeerYouWant</string>
+    <string-array name="titles">
+        <item>Strona główna</item>
+        <item>Znajdź swoje piwo!</item>
+        <item>Lista browarów</item>
+        <item>Obl stężnie %</item>
+    </string-array>
+    <string-array name="parameters_values_color">
+        <item>Jasne</item>
+        <item>Ciemne</item>
+    </string-array>
+    <string-array name="parameters_values_malt_wheat">
+        <item>Tak</item>
+        <item>Opcjonalnie</item>
+    </string-array>
+    <string-array name="parameters_values_fermentation">
+        <item>Górna</item>
+        <item>Dolna</item>
+    </string-array>
+    <string-array name="theme_list_for_settings">
+        <item>Niebieski</item>
+        <item>Piwny</item>
+        <item>Szary</item>
+    </string-array>
+    <string-array name="theme_list">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string name="chosenTheme">Wybór motywu</string>
+    <string name="chosenThemeSummary">Wybiera dany motyw dla aplikacji</string>
+    <string name="open_drawer">Otwórz szufladę</string>
+    <string name="close_drawer">Zamknij szufladę</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="top_welcome_text">Witaj!</string>
+    <string name="welcome_text_hint">Zagubiony w piwnej rewolucji??</string>
+    <string name="welcome_text_button">⇩\n Znajdź piwo dla siebie! \n⇧</string>
+    <string name="welcome_image">Zdjęcie przedstawiające piwo</string>
+    <string name="find_your_beer_text">Wybierz parametry swojego piwa</string>
+    <string name="find_your_beer_color">Barwa</string>
+    <string name="find_your_beer_radio_light">Jasne</string>
+    <string name="find_your_beer_radio_dark">Ciemne</string>
+    <string name="find_your_beer_bitter">Goryczka</string>
+    <string name="bitter_radio_weak">Słaba</string>
+    <string name="bitter_radio_normal">Normalna</string>
+    <string name="bitter_radio_strong">Mocna</string>
+    <string name="find_your_beer_malt">Słodowość</string>
+    <string name="malt_radio_weak">Słaba</string>
+    <string name="malt_radio_normal">Normalna</string>
+    <string name="malt_radio_strong">Mocna</string>
+    <string name="find_your_beer_adv_choice">Zaawansowane parametry</string>
+    <string name="find_your_beer_alcohol">Zawartość alkoholu</string>
+    <string name="alcohol_radio_low">Niska</string>
+    <string name="alcohol_radio_normal">Normalna</string>
+    <string name="alcohol_radio_high">Wysoka</string>
+    <string name="find_your_beer_malt_wheat">Słody pszeniczne</string>
+    <string name="malt_wheat_radio_yes">Tak</string>
+    <string name="malt_wheat_radio_not_necessarily">Opcjonalnie</string>
+    <string name="find_your_beer_button">Znajdź!</string>
+    <string name="find_your_beer_fermentation">Fermentacja</string>
+    <string name="fermentation_radio_upper">Górna</string>
+    <string name="fermentation_radio_lower">Dolna</string>
+    <string name="chosen_style_detail_color">Barwa:</string>
+    <string name="chosen_style_detail_bitter">Goryczka:</string>
+    <string name="chosen_style_detail_malt">Słodowość:</string>
+    <string name="chosen_style_detail_alcohol">Zawartość alkoholu:</string>
+    <string name="chosen_style_detail_wheat_malt">Słody pszeniczne</string>
+    <string name="chosen_style_detail_fermentation">Fermentacja:</string>
+    <string name="chosen_style_detail_beers">Piwa reprezentujące styl</string>
+    <string name="chosen_styles_activity_title">Proponowane style</string>
+    <string name="chosen_styles_detail_activity_title">Wybrany styl</string>
+    <string name="works_list_province_activity_title">Wybierz województwo</string>
+    <string name="works_list_activity_title">Wybierz browar</string>
+    <string name="works_list_activity_beers">PIWA</string>
+    <string name="works_detail_location"> %1$s, %2$s</string>
+    <string name="works_detail_title">Wybrany browar</string>
+    <string name="works_detail_favorite"><u>Lubię!</u></string>
+    <string name="favorite_works">Ulubione browary</string>
+    <string name="beer_ml">Piwo [ml]</string>
+    <string name="alcohol_content">Zawartość alkoholu [%]</string>
+    <string name="weight">Waga [kg]</string>
+    <string name="woman">Kobieta</string>
+    <string name="man">Mężczyzna</string>
+    <string name="calculate_promile">Oblicz promile</string>
+    <string name="start">Start</string>
+    <string name="get_time">Pobierz czas</string>
+    <string name="add_to_favourite">Dodano do ulubionych</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

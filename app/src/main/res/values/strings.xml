@@ -1,91 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">BeerYouWant</string>
     <string-array name="titles">
-        <item>Strona główna</item>
-        <item>Znajdź swoje piwo!</item>
-        <item>Lista browarów</item>
-        <item>Obl stężnie %</item>
+        <item>Home page</item>
+        <item>Find your beer!</item>
+        <item>Brewery list</item>
+        <item>Caclulate strength %</item>
     </string-array>
     <string-array name="parameters_values_color">
-        <item>Jasne</item>
-        <item>Ciemne</item>
+        <item>Light</item>
+        <item>Dark</item>
     </string-array>
     <string-array name="parameters_values_malt_wheat">
-        <item>Tak</item>
-        <item>Opcjonalnie</item>
+        <item>Yes</item>
+        <item>Optional</item>
     </string-array>
     <string-array name="parameters_values_fermentation">
-        <item>Górna</item>
-        <item>Dolna</item>
+        <item>Upper</item>
+        <item>Lower</item>
     </string-array>
     <string-array name="theme_list_for_settings">
-        <item>Niebieski</item>
-        <item>Piwny</item>
-        <item>Szary</item>
+        <item>Blue</item>
+        <item>Beer</item>
+        <item>Grey</item>
     </string-array>
     <string-array name="theme_list">
         <item>0</item>
         <item>1</item>
         <item>2</item>
     </string-array>
-    <string name="chosenTheme">Wybór motywu</string>
-    <string name="chosenThemeSummary">Wybiera dany motyw dla aplikacji</string>
-    <string name="open_drawer">Otwórz szufladę</string>
-    <string name="close_drawer">Zamknij szufladę</string>
-    <string name="action_settings">Ustawienia</string>
-    <string name="top_welcome_text">Witaj!</string>
-    <string name="welcome_text_hint">Zagubiony w piwnej rewolucji??</string>
-    <string name="welcome_text_button">⇩\n Znajdź piwo dla siebie! \n⇧</string>
-    <string name="welcome_image">Zdjęcie przedstawiające piwo</string>
-    <string name="find_your_beer_text">Wybierz parametry swojego piwa</string>
-    <string name="find_your_beer_color">Barwa</string>
-    <string name="find_your_beer_radio_light">Jasne</string>
-    <string name="find_your_beer_radio_dark">Ciemne</string>
-    <string name="find_your_beer_bitter">Goryczka</string>
-    <string name="bitter_radio_weak">Słaba</string>
-    <string name="bitter_radio_normal">Normalna</string>
-    <string name="bitter_radio_strong">Mocna</string>
-    <string name="find_your_beer_malt">Słodowość</string>
-    <string name="malt_radio_weak">Słaba</string>
-    <string name="malt_radio_normal">Normalna</string>
-    <string name="malt_radio_strong">Mocna</string>
-    <string name="find_your_beer_adv_choice">Zaawansowane parametry</string>
-    <string name="find_your_beer_alcohol">Zawartość alkoholu</string>
-    <string name="alcohol_radio_low">Niska</string>
-    <string name="alcohol_radio_normal">Normalna</string>
-    <string name="alcohol_radio_high">Wysoka</string>
-    <string name="find_your_beer_malt_wheat">Słody pszeniczne</string>
-    <string name="malt_wheat_radio_yes">Tak</string>
-    <string name="malt_wheat_radio_not_necessarily">Opcjonalnie</string>
-    <string name="find_your_beer_button">Znajdź!</string>
-    <string name="find_your_beer_fermentation">Fermentacja</string>
-    <string name="fermentation_radio_upper">Górna</string>
-    <string name="fermentation_radio_lower">Dolna</string>
-    <string name="chosen_style_detail_color">Barwa:</string>
-    <string name="chosen_style_detail_bitter">Goryczka:</string>
-    <string name="chosen_style_detail_malt">Słodowość:</string>
-    <string name="chosen_style_detail_alcohol">Zawartość alkoholu:</string>
-    <string name="chosen_style_detail_wheat_malt">Słody pszeniczne</string>
-    <string name="chosen_style_detail_fermentation">Fermentacja:</string>
-    <string name="chosen_style_detail_beers">Piwa reprezentujące styl</string>
-    <string name="chosen_styles_activity_title">Proponowane style</string>
-    <string name="chosen_styles_detail_activity_title">Wybrany styl</string>
-    <string name="works_list_province_activity_title">Wybierz województwo</string>
-    <string name="works_list_activity_title">Wybierz browar</string>
-    <string name="works_list_activity_beers">PIWA</string>
-    <string name="works_detail_location"> %1$s, %2$s</string>
-    <string name="works_detail_title">Wybrany browar</string>
-    <string name="works_detail_favorite"><u>Lubię!</u></string>
-    <string name="favorite_works">Ulubione browary</string>
-    <string name="beer_ml">Beer [Ml]</string>
+    <string name="action_settings">Settings</string>
     <string name="alcohol_content">Alcohol Content [%]</string>
-    <string name="weight">Weight [kg]</string>
-    <string name="woman">Woman</string>
-    <string name="man">Man</string>
-    <string name="calculate_promile">Calculate Promile</string>
-    <string name="start">Start</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="alcohol_radio_high">High</string>
+    <string name="alcohol_radio_low">Low</string>
+    <string name="alcohol_radio_normal">Normal</string>
+    <string name="beer_ml">Beer [ml]</string>
+    <string name="bitter_radio_normal">Normal</string>
+    <string name="bitter_radio_strong">Strong</string>
+    <string name="bitter_radio_weak">Weak</string>
+    <string name="calculate_promile">Calculate promile</string>
+    <string name="chosenTheme">Select theme</string>
+    <string name="chosenThemeSummary">Choose theme for application</string>
+    <string name="chosen_style_detail_alcohol">Alcohol content:</string>
+    <string name="chosen_style_detail_beers">Beer representing style</string>
+    <string name="chosen_style_detail_bitter">Bitter:</string>
+    <string name="chosen_style_detail_color">Color:</string>
+    <string name="chosen_style_detail_fermentation">Fermentation:</string>
+    <string name="chosen_style_detail_malt">Malt:</string>
+    <string name="chosen_style_detail_wheat_malt">Malt wheat:</string>
+    <string name="chosen_styles_activity_title">Proposed styles</string>
+    <string name="chosen_styles_detail_activity_title">Chosen style</string>
+    <string name="close_drawer">Close the drawer</string>
+    <string name="favorite_works">Favourite breweries</string>
+    <string name="fermentation_radio_lower">Lower</string>
+    <string name="fermentation_radio_upper">Upper</string>
+    <string name="find_your_beer_adv_choice">Advanced parameters</string>
+    <string name="find_your_beer_alcohol">Alcohol content</string>
+    <string name="find_your_beer_bitter">Bitter</string>
+    <string name="find_your_beer_button">Find!</string>
+    <string name="find_your_beer_color">Color</string>
+    <string name="find_your_beer_fermentation">Fermentation</string>
+    <string name="find_your_beer_malt">Malt</string>
+    <string name="find_your_beer_malt_wheat">Malt wheat</string>
+    <string name="find_your_beer_radio_dark">Dark</string>
+    <string name="find_your_beer_radio_light">Light</string>
+    <string name="find_your_beer_text">Choose parameters for your beer</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="malt_radio_normal">Normal</string>
+    <string name="malt_radio_strong">Strong</string>
+    <string name="malt_radio_weak">Weak</string>
+    <string name="malt_wheat_radio_not_necessarily">Optional</string>
+    <string name="malt_wheat_radio_yes">Yes</string>
+    <string name="man">Man</string>
+    <string name="open_drawer">Open the drawer</string>
+    <string name="start">Start</string>
+    <string name="top_welcome_text">Welcome!</string>
+    <string name="weight">Weight [kg]</string>
+    <string name="welcome_image">Photo representing beer</string>
+    <string name="welcome_text_button">⇩\n Find beer for yourself! \n⇧</string>
+    <string name="welcome_text_hint">Lost in a beer revolution??</string>
+    <string name="woman">Woman</string>
+    <string name="works_detail_favorite"><u>Like it!</u></string>
+    <string name="works_detail_location">%1$s, %2$s</string>
+    <string name="works_detail_title">Chosen brewery</string>
+    <string name="works_list_activity_beers">BEERS</string>
+    <string name="works_list_activity_title">Choose brewery</string>
+    <string name="works_list_province_activity_title">Choose province</string>
+    <string name="get_time">Get time</string>
+    <string name="add_to_favourite">Added to favourite list</string>
 </resources>

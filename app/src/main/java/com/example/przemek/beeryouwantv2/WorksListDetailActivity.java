@@ -106,7 +106,7 @@ public class WorksListDetailActivity extends AppCompatActivity {
 
     public void onFavoriteClicked(View view) {
         works = app.getDataManager().getWorks(worksNo);
-        message = "Dodano do ulubionych " + works.getNameWorks() + " !";
+        message = getResources().getString(R.string.add_to_favourite) + " " + works.getNameWorks() + " !";
         //Toast.makeText(getApplicationContext(), "Kliknalem ulubione", Toast.LENGTH_SHORT).show();
 
         if(favoriteCheckBox.isChecked()) {
